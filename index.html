@@ -1,11 +1,52 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Kankamın Sitesi</title>
+    <title>Mita Sunucu Paneli</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.alphacoders.com/132/1327534.png');
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+        }
+        .btn {
+            background: #2ecc71;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #27ae60;
+            box-shadow: 0 0 20px #2ecc71;
+        }
+    </style>
 </head>
-<body style="background-color: #1a1a1a; color: white; text-align: center; font-family: sans-serif; padding-top: 50px;">
-    <h1>Selam Kanka! 👋</h1>
-    <p>Sitem artık GitHub üzerinde canlı!</p>
+<body>
+    <div class="container">
+        <img src="https://i.ibb.co/vz6mDmx/logo.png" width="150" alt="Logo">
+        <h1>Mita Reborn Sunucusu</h1>
+        <p>Dünyanın en iyi Minecraft deneyimine hazır mısın?</p>
+        <br><br>
+        <a href="#" class="btn">Discord'a Katıl</a>
+    </div>
 </body>
 </html>
