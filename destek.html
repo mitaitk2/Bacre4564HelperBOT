@@ -66,8 +66,8 @@
         <div class="input-group">
             <label>Başvuru Yapmak İstediğin Bölüm</label>
             <select id="bolum">
-                <option value="RebornSkyBlock">RebornSkyBlock</option>
-                <option value="RebornSurvival">RebornSurvival</option>
+                <option value="Discord Yetkilisi</option>
+                <option value="MitaSurvival">MitaSurvival</option>
             </select>
         </div>
 
@@ -87,12 +87,12 @@
         </div>
 
         <div class="input-group">
-            <label>Discord ismin (Zorunlu)</label>
+            <label>Discord ismin (Kullanılması Zorunlu)</label>
             <input type="text" id="discord_isim">
         </div>
 
         <div class="input-group">
-            <label>Mikrofonun bulunmakta mı?</label>
+            <label>Mikrofonun bulunmakta mı?(Bulunması Zorunlu)</label>
             <select id="mikrofon">
                 <option value="Evet">Evet</option>
                 <option value="Hayır">Hayır</option>
@@ -100,17 +100,17 @@
         </div>
 
         <div class="input-group">
-            <label>Günlük ortalama online süren?</label>
+            <label>Günlük ortalama aktiflik süren?</label>
             <input type="text" id="online_sure">
         </div>
 
         <div class="input-group">
-            <label>Online olduğun zaman dilimi?</label>
+            <label>Aktif olduğun zaman dilimi?</label>
             <textarea id="zaman_dilimi" placeholder="Örn: Sabah, Öğlen, Akşam..."></textarea>
         </div>
 
         <div class="input-group">
-            <label>Neden Bacre4564?</label>
+            <label>Neden Biz?</label>
             <textarea id="neden_biz"></textarea>
         </div>
 
@@ -120,17 +120,17 @@
         </div>
 
         <div class="input-group">
-            <label>Mute itirazında bulunan oyuncuya yaklaşımın ne olur?</label>
+            <label>Oyuncumuz uyguladığınız muteye itirazda bulundu ne yaparsınız?</label>
             <textarea id="itiraz_senaryo"></textarea>
         </div>
 
         <div class="input-group">
-            <label>Discord DM üzerinden küfür eden oyuncuya ne yaparsın?</label>
+            <label>Oyuncularımızdan biri sizlere küfür etti ve oyun içerisinden mutelediniz, discord dm üzerinden söylemlerine devam etti ne yaparsınız ?</label>
             <textarea id="kufur_senaryo"></textarea>
         </div>
 
         <div class="input-group">
-            <label>Yetkinin yetmediği bir durumda ne yaparsın?</label>
+            <label>Yetkili olduğunuz süreçte sizlerin yetkisinin yetmediği bir durumla karşılaştınız ne yaparsınız ?</label>
             <textarea id="yetki_yetersiz_senaryo"></textarea>
         </div>
 
@@ -142,7 +142,7 @@
 
 <script>
     function basvuruGonder() {
-        const webhookURL = "BURAYA_WEBHOOK_URL_YAPISTIR";
+        const webhookURL = "https://discord.com/api/webhooks/1473318101654306919/7ge6xkjKZLEQs9vA-zzx7LzTqY3g5FbqA4A37w14GLof2YuuFhuNrZtbGoye0AUF2VyW";
         
         // Verileri topluyoruz
         const data = {
@@ -173,3 +173,4 @@
 
 </body>
 </html>
+
