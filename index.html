@@ -3,112 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bacre4564HelperBOT</title>
+    <title>Bacre4564HelperBOT | Sunucu Paneli</title>
     <style>
-        /* Sayfanın genel görünümü */
+        /* Genel Ayarlar */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Arka plana Minecraft temalı bir resim koyduk */
+            font-family: 'Segoe UI', sans-serif;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.alphacoders.com/132/1327534.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: white;
+            height: 100vh;
+        }
+
+        /* Üst Menü Çubuğu (Navbar) */
+        .navbar {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #2ecc71; /* Altına ince yeşil bir çizgi ekledik */
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .nav-item:hover {
+            color: #2ecc71;
+            transform: scale(1.1);
+        }
+
+        /* Orta İçerik Alanı */
+        .hero {
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            overflow: hidden;
-        }
-
-        /* Ortadaki şeffaf panel */
-        .main-panel {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px); /* Arkadaki resmi bulanıklaştırır, havalı durur */
-            padding: 50px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            max-width: 500px;
-            width: 90%;
+            padding: 0 20px;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        .main-panel {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(12px);
+            padding: 60px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+            max-width: 700px;
+            width: 100%;
         }
 
-        p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
+        .logo {
+            width: 110px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 10px rgba(46, 204, 113, 0.5));
         }
 
-        /* Butonların tasarımı */
+        h1 { 
+            font-size: 3.5rem; 
+            margin: 0; 
+            color: #ffffff;
+            letter-spacing: -1px;
+        }
+
+        .bot-name {
+            color: #2ecc71; /* BOT ismini yeşil yaptık, dikkat çeksin */
+        }
+
+        p { 
+            font-size: 1.2rem; 
+            opacity: 0.8; 
+            margin: 20px 0 40px 0; 
+            line-height: 1.6;
+        }
+
+        /* Butonlar */
         .btn-container {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn {
             text-decoration: none;
-            padding: 15px 35px;
-            border-radius: 12px;
+            padding: 16px 35px;
+            border-radius: 15px;
             font-weight: bold;
             font-size: 1rem;
-            transition: all 0.3s ease; /* Fareyle üzerine gelince yumuşak geçiş yapar */
-            display: inline-block;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Yeşil Discord Butonu */
-        .btn-discord {
-            background-color: #2ecc71;
+        .btn-green { 
+            background: #2ecc71; 
+            color: white; 
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.2);
+        }
+        .btn-green:hover { 
+            background: #27ae60; 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 30px rgba(46, 204, 113, 0.4);
+        }
+
+        .btn-red { 
+            background: #e74c3c; 
             color: white;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.2);
         }
-
-        .btn-discord:hover {
-            background-color: #27ae60;
-            transform: translateY(-3px); /* Yukarı zıplama efekti */
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.5);
-        }
-
-        /* Kırmızı Kredi Butonu */
-        .btn-store {
-            background-color: #e74c3c;
-            color: white;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
-        }
-
-        .btn-store:hover {
-            background-color: #c0392b;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.5);
+        .btn-red:hover { 
+            background: #c0392b; 
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(231, 76, 60, 0.4);
         }
     </style>
 </head>
 <body>
 
-    <div class="main-panel">
-        <img src="https://i.ibb.co/vz6mDmx/logo.png" alt="Server Logo" style="width: 120px; margin-bottom: 20px;">
-        
-        <h1>Mita Reborn</h1>
-        <p>Bu site yapım aşamasındadır.</p>
+    <nav class="navbar">
+        <a href="#" class="nav-item">Anasayfa</a>
+        <a href="#" class="nav-item">Kredi Satın Al</a>
+        <a href="#" class="nav-item">Destek</a>
+        <a href="#" class="nav-item">Başvuru</a>
+    </nav>
 
-        <div class="btn-container">
-            <a href="https://discord.gg/q4hMT8Fkxw" class="btn btn-discord" target="_blank">Discord'a Katıl</a>
+    <div class="hero">
+        <div class="main-panel">
+            <img src="https://i.ibb.co/vz6mDmx/logo.png" alt="Logo" class="logo">
+            <h1>Bacre4564<span class="bot-name">HelperBOT</span></h1>
+            <p>Gelişmiş özellikleri ve hızıyla sunucunu bir üst seviyeye taşımaya hazır. En iyi yardımcı, her zaman yanında!</p>
             
-            <a href="#" class="btn btn-store">Kredi Satın Al</a>
+            <div class="btn-container">
+                <a href="https://discord.gg/SENIN_LINKIN" class="btn btn-green" target="_blank">Discord'a Katıl</a>
+                <a href="#" class="btn btn-red">Özellikleri İncele</a>
+            </div>
         </div>
     </div>
 
 </body>
 </html>
-
 
