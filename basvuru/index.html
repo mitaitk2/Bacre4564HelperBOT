@@ -2,18 +2,64 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Bacre4564 | Giriş</title>
+    <title>Başvuru Formu</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f4f7f6; }
-        .menu { display: flex; justify-content: center; gap: 20px; }
-        .btn { padding: 15px 25px; background: #3498db; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; padding: 20px; }
+        .form-wrapper { max-width: 800px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #2c3e50; text-align: center; }
+        .input-group { margin-bottom: 20px; display: flex; align-items: center; }
+        .input-group label { width: 250px; font-weight: bold; color: #555; }
+        .input-group input, .input-group select, .input-group textarea { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 4px; background: #fafafa; }
+        .submit-btn { background-color: #2ecc71; color: white; border: none; padding: 18px; width: 100%; border-radius: 6px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .submit-btn:hover { background-color: #27ae60; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #7f8c8d; text-decoration: none; }
     </style>
 </head>
 <body>
-    <h1>Sunucu Yönetim Paneli</h1>
-    <div class="menu">
-        <a href="basvuru" class="btn">Başvuru</a>
-        <a href="destek" class="btn">Destek</a>
+
+<div class="form-wrapper">
+    <h2>Ekip Arkadaşı Başvuru Formu</h2>
+    <div class="input-group"><label>Ad Soyad</label><input type="text" id="ad_soyad"></div>
+    <div class="input-group"><label>Yaş</label><input type="number" id="yas"></div>
+    <div class="input-group"><label>Oyun İsmin</label><input type="text" id="oyun_isim"></div>
+    <div class="input-group"><label>Discord İsmin</label><input type="text" id="discord_isim"></div>
+    <div class="input-group">
+        <label>Bölüm</label>
+        <select id="bolum">
+            <option value="Discord Yetkilisi">Discord Yetkilisi</option>
+            <option value="MitaSurvival">MitaSurvival</option>
+        </select>
     </div>
+    <div class="input-group"><label>Neden Biz?</label><textarea id="neden" rows="3"></textarea></div>
+
+    <button class="submit-btn" onclick="basvuruGonder()">BAŞVURUYU GÖNDER</button>
+    <a href="../" class="back-link">← Ana Sayfaya Dön</a>
+</div>
+
+<script>
+    function basvuruGonder() {
+        const webhookURL = "https://discord.com/api/webhooks/1473318101654306919/7ge6xkjKZLEQs9vA-zzx7LzTqY3g5FbqA4A37w14GLof2YuuFhuNrZtbGoye0AUF2VyW"; // Buraya kendi Webhook'unu yapıştır
+        const data = {
+            embeds: [{
+                title: "📩 Yeni Başvuru Geldi!",
+                color: 3066993,
+                fields: [
+                    { name: "👤 İsim/Yaş", value: document.getElementById('ad_soyad').value + " / " + document.getElementById('yas').value, inline: true },
+                    { name: "🎮 Oyun/Discord", value: document.getElementById('oyun_isim').value + " / " + document.getElementById('discord_isim').value, inline: true },
+                    { name: "📝 Neden?", value: document.getElementById('neden').value }
+                ]
+            }]
+        };
+
+        fetch(webhookURL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        }).then(() => {
+            alert("Başvurunuz başarıyla gönderildi!");
+            window.location.href = "../destek";
+        });
+    }
+</script>
 </body>
 </html>
