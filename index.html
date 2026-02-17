@@ -1,53 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bacre4564HelperBOT</title>
     <style>
+        /* Sayfanın genel görünümü */
         body {
             margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.alphacoders.com/132/1327534.png');
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Arka plana Minecraft temalı bir resim koyduk */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.alphacoders.com/132/1327534.png');
             background-size: cover;
+            background-position: center;
             background-attachment: fixed;
             color: white;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            overflow: hidden;
         }
-        .container {
+
+        /* Ortadaki şeffaf panel */
+        .main-panel {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(15px); /* Arkadaki resmi bulanıklaştırır, havalı durur */
+            padding: 50px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            max-width: 500px;
+            width: 90%;
         }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* Butonların tasarımı */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .btn {
-            background: #2ecc71;
-            color: white;
-            padding: 15px 30px;
             text-decoration: none;
-            border-radius: 10px;
+            padding: 15px 35px;
+            border-radius: 12px;
             font-weight: bold;
-            transition: 0.3s;
+            font-size: 1rem;
+            transition: all 0.3s ease; /* Fareyle üzerine gelince yumuşak geçiş yapar */
+            display: inline-block;
         }
-        .btn:hover {
-            background: #27ae60;
-            box-shadow: 0 0 20px #2ecc71;
+
+        /* Yeşil Discord Butonu */
+        .btn-discord {
+            background-color: #2ecc71;
+            color: white;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-discord:hover {
+            background-color: #27ae60;
+            transform: translateY(-3px); /* Yukarı zıplama efekti */
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.5);
+        }
+
+        /* Kırmızı Kredi Butonu */
+        .btn-store {
+            background-color: #e74c3c;
+            color: white;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-store:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="https://i.ibb.co/vz6mDmx/logo.png" width="150" alt="Logo">
-        <h1>Mita Reborn Sunucusu</h1>
-        <p>Site şu an gelişim aşamasındadır.</p>
-        <br><br>
-        <a href="#" class="btn">Discord'a Katıl</a>
+
+    <div class="main-panel">
+        <img src="https://i.ibb.co/vz6mDmx/logo.png" alt="Server Logo" style="width: 120px; margin-bottom: 20px;">
+        
+        <h1>Mita Reborn</h1>
+        <p>Bu site yapım aşamasındadır.</p>
+
+        <div class="btn-container">
+            <a href="https://discord.gg/q4hMT8Fkxw" class="btn btn-discord" target="_blank">Discord'a Katıl</a>
+            
+            <a href="#" class="btn btn-store">Kredi Satın Al</a>
+        </div>
     </div>
+
 </body>
 </html>
 
