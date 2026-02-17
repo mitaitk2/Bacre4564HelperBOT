@@ -2,44 +2,87 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Destek Talepleri</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destek Aç | Bacre4564</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: sans-serif; background: #f4f7f6; margin: 0; }
-        .header { background: #2c3e50; color: white; padding: 40px; text-align: center; }
-        .container { max-width: 1000px; margin: -20px auto 50px; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .btn-new { background: #2ecc71; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        table { width: 100%; border-collapse: collapse; }
-        th { text-align: left; padding: 15px; background: #f8f9fa; border-bottom: 2px solid #eee; }
-        td { padding: 15px; border-bottom: 1px solid #eee; }
-        .status-badge { background: #fee2e2; color: #ef4444; padding: 5px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        :root { --p: #2ecc71; --bg: #f4f7f6; --white: #ffffff; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); margin: 0; padding: 20px; }
+        .wrapper { max-width: 900px; margin: 0 auto; background: var(--white); border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); overflow: hidden; display: flex; }
+        .sidebar { width: 300px; background: #fafafa; padding: 40px; border-right: 1px solid #eee; }
+        .main-form { flex: 1; padding: 40px; }
+        h2 { margin-top: 0; color: #333; }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #666; font-size: 0.9rem; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box; }
+        textarea { resize: vertical; min-height: 150px; }
+        .btn-send { background: var(--p); color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; float: right; transition: 0.3s; }
+        .btn-send:hover { background: #27ae60; transform: translateY(-2px); }
+        .info-box { background: #fff; border: 1px solid #eee; padding: 20px; border-radius: 10px; font-size: 0.85rem; color: #777; }
     </style>
 </head>
 <body>
 
-<div class="header"><h1>DESTEK TALEPLERİ</h1></div>
-
-<div class="container">
-    <div class="top-bar">
-        <h2>Taleplerim</h2>
-        <a href="../basvuru" class="btn-new">+ Yeni Destek Aç</a>
+<div class="wrapper">
+    <div class="main-form">
+        <h2>Destek Aç</h2>
+        <div class="input-group">
+            <label>Başlık</label>
+            <input type="text" id="baslik" placeholder="Sorununuzun kısa özeti...">
+        </div>
+        <div class="input-group">
+            <label>Kategori</label>
+            <select id="kategori">
+                <option value="Genel Destek">Genel Destek</option>
+                <option value="Reborn Skyblock">Reborn Skyblock</option>
+                <option value="Mita Survival">Mita Survival</option>
+                <option value="Ödeme Sorunları">Ödeme Sorunları</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Mesaj</label>
+            <textarea id="mesaj" placeholder="Yetkili ekibimize iletmek istediğiniz mesajı girin."></textarea>
+        </div>
+        <button class="btn-send" onclick="destekGonder()">Gönder</button>
     </div>
-
-    <table>
-        <thead>
-            <tr><th>ID</th><th>BAŞLIK</th><th>DURUM</th></tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>#6679</td>
-                <td>Eşya çalınması</td>
-                <td><span class="status-badge">Kapalı</span></td>
-            </tr>
-        </tbody>
-    </table>
-    <br>
-    <a href="../" style="text-decoration: none; color: #95a5a6;">← Ana Sayfaya Dön</a>
+    
+    <div class="sidebar">
+        <h3>Bilgilendirme</h3>
+        <p class="info-box">Doğru kategori ve doğru sunucu seçtiğinizden emin olunuz. Size en iyi şekilde destek verebilmemiz için mesajınızın net ve açıklayıcı olmasına özen gösterin.</p>
+        <br>
+        <a href="../" style="text-decoration: none; color: #999; font-size: 0.8rem;">← Vazgeç ve Dön</a>
+    </div>
 </div>
+
+<script>
+    function destekGonder() {
+        const webhookURL = "https://discord.com/api/webhooks/1473318101654306919/7ge6xkjKZLEQs9vA-zzx7LzTqY3g5FbqA4A37w14GLof2YuuFhuNrZtbGoye0AUF2VyW";
+        const baslik = document.getElementById('baslik').value;
+        const kategori = document.getElementById('kategori').value;
+        const mesaj = document.getElementById('mesaj').value;
+
+        if(!baslik || !mesaj) { alert("Lütfen tüm alanları doldurun!"); return; }
+
+        const data = {
+            embeds: [{
+                title: "🎫 YENİ DESTEK TALEBİ",
+                color: 15158332,
+                fields: [
+                    { name: "📌 Başlık", value: baslik },
+                    { name: "📁 Kategori", value: kategori, inline: true },
+                    { name: "💬 Mesaj", value: mesaj }
+                ],
+                timestamp: new Date()
+            }]
+        };
+
+        fetch(webhookURL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) })
+        .then(() => {
+            alert("Talebiniz başarıyla oluşturuldu!");
+            window.location.href = "talepler.html"; // Gönderince listeye atar
+        });
+    }
+</script>
 
 </body>
 </html>
