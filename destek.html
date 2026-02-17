@@ -2,54 +2,48 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Destek & Başvuru | Bacre4564HelperBOT</title>
+    <title>Başvuru Formu</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.alphacoders.com/132/1327534.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        .form-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-            width: 90%;
-            max-width: 500px;
-        }
-        h1 { color: #2ecc71; margin-bottom: 20px; }
-        p { margin-bottom: 30px; opacity: 0.9; }
-        .back-btn {
-            display: inline-block;
-            text-decoration: none;
-            color: white;
-            background: #e74c3c;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .back-btn:hover { background: #c0392b; transform: scale(1.05); }
+        body { font-family: sans-serif; background: #1a1a1a; color: white; display: flex; justify-content: center; padding: 50px; }
+        .form-card { background: #2c2f33; padding: 30px; border-radius: 15px; width: 400px; border: 1px solid #2ecc71; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; }
+        button { background: #2ecc71; color: white; border: none; padding: 10px; width: 100%; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h1>Destek Paneli</h1>
-        <p>Destek talebi oluşturmak veya başvuru yapmak için lütfen Discord sunucumuza gelerek bir ticket açın.</p>
-        <a href="https://discord.gg/q4hMT8Fkxw" style="display: block; background: #5865F2; color: white; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; margin-bottom: 20px;">Discord'a Git</a>
-        <a href="index.html" class="back-btn">← Ana Sayfaya Dön</a>
+    <div class="form-card">
+        <h2>Başvuru Formu</h2>
+        <input type="text" id="username" placeholder="Discord Kullanıcı Adınız">
+        <textarea id="reason" placeholder="Neden başvuruyorsunuz?" rows="4"></textarea>
+        <button onclick="sendToDiscord()">Gönder</button>
+        <p id="status"></p>
     </div>
+
+    <script>
+        function sendToDiscord() {
+            const webhookURL = "BURAYA_WEBHOOK_URL_YAPISTIR"; // Az önce kopyaladığın URL
+            const user = document.getElementById('username').value;
+            const msg = document.getElementById('reason').value;
+
+            const data = {
+                embeds: [{
+                    title: "Yeni Başvuru!",
+                    color: 3066993,
+                    fields: [
+                        { name: "Kullanıcı", value: user },
+                        { name: "Sebep", value: msg }
+                    ]
+                }]
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(() => {
+                document.getElementById('status').innerText = "Başvuru başarıyla gönderildi!";
+            });
+        }
+    </script>
 </body>
 </html>
