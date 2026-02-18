@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Destek Talepleri | Bacre4564</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --p: #2ecc71; --dark: #1a1c1e; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; margin: 0; }
+        .navbar { background: #fff; padding: 15px 50px; border-bottom: 1px solid #eee; color: #888; font-size: 0.9rem; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .btn-green { background: var(--p); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
+        .btn-green:hover { transform: scale(1.05); }
+        
+        table { width: 100%; background: white; border-collapse: collapse; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        th { background: #f8f9fa; padding: 18px; text-align: left; color: #7f8c8d; font-size: 0.75rem; text-transform: uppercase; border-bottom: 2px solid #eee; }
+        td { padding: 20px 18px; border-bottom: 1px solid #f0f0f0; color: #333; font-size: 0.95rem; }
+        .status { background: #fee2e2; color: #ef4444; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        
+        .footer-stats { background: var(--p); color: white; padding: 30px 40px; margin-top: 40px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .heads { display: flex; gap: 10px; }
+        .heads img { width: 45px; height: 45px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.3); }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <i class="fas fa-home"></i> Destek <span style="margin:0 10px;">></span> <span style="color:#333;">Destek Talepleri</span>
+</div>
+
+<div class="container">
+    <div class="top-bar">
+        <h2 style="color: #333; font-size: 1.8rem; margin:0;">Destek Talepleri</h2>
+        <a href="index.html" class="btn-green"><i class="fas fa-plus"></i> Destek Aç</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>BAŞLIK</th>
+                <th>KATEGORİ</th>
+                <th>SON GÜNCELLEME</th>
+                <th>DURUM</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>#6679</td>
+                <td>Eşya çalınması</td>
+                <td>Reborn Skyblock</td>
+                <td>9 ay önce</td>
+                <td><span class="status">Kapalı</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer-stats">
+        <div>
+            <h3 style="margin:0; font-size: 1.5rem;">Son Kayıtlar</h3>
+            <p style="margin:5px 0 0; opacity: 0.9;">Sunucumuza 388.557 oyuncu kayıt oldu!</p>
+        </div>
+        <div class="heads">
+            <img src="https://mc-heads.net/avatar/sagocangali/45" title="sagocangali">
+            <img src="https://mc-heads.net/avatar/sagora/45" title="sagora">
+            <img src="https://mc-heads.net/avatar/Cacoderler/45" title="Cacoderler">
+            <img src="https://mc-heads.net/avatar/afwafwaf/45" title="afwafwaf">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
