@@ -8,17 +8,18 @@
     <style>
         :root { --p: #2ecc71; --bg: #f4f7f6; --white: #ffffff; }
         body { font-family: 'Poppins', sans-serif; background: var(--bg); margin: 0; padding: 20px; }
-        .wrapper { max-width: 900px; margin: 0 auto; background: var(--white); border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); overflow: hidden; display: flex; }
-        .sidebar { width: 300px; background: #fafafa; padding: 40px; border-right: 1px solid #eee; }
-        .main-form { flex: 1; padding: 40px; }
-        h2 { margin-top: 0; color: #333; }
+        .wrapper { max-width: 1000px; margin: 40px auto; background: var(--white); border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); overflow: hidden; display: flex; flex-wrap: wrap; }
+        .main-form { flex: 2; padding: 40px; min-width: 300px; }
+        .sidebar { flex: 1; background: #fafafa; padding: 40px; border-left: 1px solid #eee; min-width: 250px; }
+        h2 { margin-top: 0; color: #333; font-size: 1.5rem; }
         .input-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: bold; color: #666; font-size: 0.9rem; }
-        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box; }
-        textarea { resize: vertical; min-height: 150px; }
-        .btn-send { background: var(--p); color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; float: right; transition: 0.3s; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #666; font-size: 0.85rem; text-transform: uppercase; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box; background: #fff; }
+        textarea { resize: vertical; min-height: 120px; }
+        .btn-send { background: var(--p); color: white; border: none; padding: 15px 40px; border-radius: 8px; cursor: pointer; font-weight: bold; float: right; transition: 0.3s; margin-top: 10px; }
         .btn-send:hover { background: #27ae60; transform: translateY(-2px); }
-        .info-box { background: #fff; border: 1px solid #eee; padding: 20px; border-radius: 10px; font-size: 0.85rem; color: #777; }
+        .info-box { background: #fff; border: 1px solid #eee; padding: 20px; border-radius: 10px; font-size: 0.9rem; color: #555; line-height: 1.6; }
+        .info-title { font-weight: bold; color: #333; display: block; margin-bottom: 10px; font-size: 1.1rem; }
     </style>
 </head>
 <body>
@@ -28,15 +29,15 @@
         <h2>Destek Aç</h2>
         <div class="input-group">
             <label>Başlık</label>
-            <input type="text" id="baslik" placeholder="Sorununuzun kısa özeti...">
+            <input type="text" id="baslik" placeholder="Başlık girin.">
         </div>
         <div class="input-group">
             <label>Kategori</label>
             <select id="kategori">
-                <option value="Genel Destek">Genel Destek</option>
+                <option value="Genel Destek">Kategori seçin.</option>
                 <option value="Reborn Skyblock">Reborn Skyblock</option>
                 <option value="Mita Survival">Mita Survival</option>
-                <option value="Ödeme Sorunları">Ödeme Sorunları</option>
+                <option value="Discord Destek">Discord Destek</option>
             </select>
         </div>
         <div class="input-group">
@@ -47,26 +48,26 @@
     </div>
     
     <div class="sidebar">
-        <h3>Bilgilendirme</h3>
-        <p class="info-box">Doğru kategori ve doğru sunucu seçtiğinizden emin olunuz. Size en iyi şekilde destek verebilmemiz için mesajınızın net ve açıklayıcı olmasına özen gösterin.</p>
+        <span class="info-title">Bilgilendirme</span>
+        <p class="info-box">Doğru kategori ve doğru sunucu seçtiğinizden emin olunuz. Size en iyi şekilde Destek verebilmemiz için mesajınızın net ve açıklayıcı olmasına özen gösterin.</p>
         <br>
-        <a href="../" style="text-decoration: none; color: #999; font-size: 0.8rem;">← Vazgeç ve Dön</a>
+        <a href="../" style="text-decoration: none; color: #999; font-size: 0.8rem;"><i class="fas fa-arrow-left"></i> Vazgeç ve Geri Dön</a>
     </div>
 </div>
 
 <script>
     function destekGonder() {
-        const webhookURL = "https://discord.com/api/webhooks/1473318101654306919/7ge6xkjKZLEQs9vA-zzx7LzTqY3g5FbqA4A37w14GLof2YuuFhuNrZtbGoye0AUF2VyW";
+        const webhookURL = "BURAYA_WEBHOOK_URL_GELECEK";
         const baslik = document.getElementById('baslik').value;
         const kategori = document.getElementById('kategori').value;
         const mesaj = document.getElementById('mesaj').value;
 
-        if(!baslik || !mesaj) { alert("Lütfen tüm alanları doldurun!"); return; }
+        if(!baslik || !mesaj) { alert("Lütfen boş alan bırakmayın!"); return; }
 
         const data = {
             embeds: [{
                 title: "🎫 YENİ DESTEK TALEBİ",
-                color: 15158332,
+                color: 3447003,
                 fields: [
                     { name: "📌 Başlık", value: baslik },
                     { name: "📁 Kategori", value: kategori, inline: true },
@@ -79,11 +80,10 @@
         fetch(webhookURL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) })
         .then(() => {
             alert("Talebiniz başarıyla oluşturuldu!");
-            window.location.href = "talepler.html"; // Gönderince listeye atar
+            window.location.href = "talepler.html"; // Eşleşme: Taleplerim sayfasına atar
         });
     }
 </script>
 
 </body>
 </html>
-
