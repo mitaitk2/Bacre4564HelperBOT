@@ -3,50 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bacre4564HelperBOT Discord Kuralları</title>
+    <title>Discord Kuralları | Bacre4564</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #2ecc71; --bg: #0f1113; --c: #1c1f22; --text-dim: #a0a0a0; }
+        :root { --primary: #7289da; --bg: #0f1113; --c: #1c1f22; --text-dim: #a0a0a0; }
         body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; padding: 40px 20px; }
-        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 0%, rgba(46, 204, 113, 0.1) 0%, transparent 50%); z-index: -1; }
+        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 0%, rgba(114, 137, 218, 0.1) 0%, transparent 50%); z-index: -1; }
         
-        .rules-box { max-width: 800px; margin: 0 auto; background: var(--c); padding: 40px; border-radius: 25px; border-left: 5px solid #7289da; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { color: #7289da; display: flex; align-items: center; gap: 15px; margin-bottom: 30px; }
+        .rules-container { max-width: 800px; margin: 0 auto; background: var(--c); padding: 40px; border-radius: 30px; border-left: 6px solid var(--primary); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         
-        .rule-item { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
-        .rule-item:hover { background: rgba(114, 137, 218, 0.05); border-color: #7289da; }
-        .rule-item b { color: #7289da; margin-right: 10px; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { font-size: 2.2rem; color: var(--primary); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .header p { color: var(--text-dim); }
 
-        /* İstediğin o özel buton */
-        .penalty-btn { 
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            background: #e74c3c; color: white; text-decoration: none; 
-            padding: 20px; border-radius: 15px; font-weight: bold; margin-top: 40px;
-            transition: 0.4s; border: none; cursor: pointer; font-size: 1.1rem;
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
+        .rule-group { display: flex; flex-direction: column; gap: 15px; }
+        .rule-card { 
+            background: rgba(255,255,255,0.02); padding: 20px 25px; border-radius: 15px; 
+            border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 20px;
+            transition: 0.3s;
         }
-        .penalty-btn:hover { background: #c0392b; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4); }
+        .rule-card:hover { background: rgba(114, 137, 218, 0.05); border-color: var(--primary); transform: translateX(5px); }
+        .rule-number { background: var(--primary); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; flex-shrink: 0; }
+        .rule-content { font-size: 1rem; line-height: 1.5; color: #eee; }
+
+        .footer-info { margin-top: 40px; padding: 25px; background: rgba(114, 137, 218, 0.05); border-radius: 15px; text-align: center; border: 1px dashed rgba(114, 137, 218, 0.3); }
+        .footer-info p { margin: 0; color: var(--text-dim); font-size: 0.9rem; font-style: italic; }
+
+        .action-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
+        .btn { padding: 18px; border-radius: 12px; text-decoration: none; font-weight: bold; text-align: center; transition: 0.3s; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
         
-        .back-link { display: block; text-align: center; margin-top: 25px; color: var(--text-dim); text-decoration: none; }
+        .btn-penalty { background: #e74c3c; color: white; }
+        .btn-penalty:hover { background: #c0392b; transform: translateY(-3px); }
+        
+        .btn-back { background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); }
+        .btn-back:hover { background: rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
     <div class="bg-glow"></div>
-    <div class="rules-box">
-        <h1><i class="fab fa-discord"></i> Discord Kuralları</h1>
+    <div class="rules-container">
+        <div class="header">
+            <h1><i class="fab fa-discord"></i> Discord Kuralları</h1>
+            <p>Bacre4564 Topluluğu Genel Davranış İlkeleri</p>
+        </div>
         
-        <div class="rule-item"><b>1.</b> Saygılı olun; küfür, argo ve hakaret yasaktır.</div>
-        <div class="rule-item"><b>2.</b> Din, dil, ırk ve siyaset tartışmaları kesinlikle yasaktır.</div>
-        <div class="rule-item"><b>3.</b> Reklam yapmak (DM dahil) sınırsız uzaklaştırma sebebidir.</div>
-        <div class="rule-item"><b>4.</b> Spam, flood ve caps kullanımı yasaktır.</div>
-        <div class="rule-item"><b>5.</b> Yetkilileri gereksiz yere etiketlemek yasaktır.</div>
+        <div class="rule-group">
+            <div class="rule-card"><div class="rule-number">1</div><div class="rule-content">Küfür, argo, hakaret ve her türlü küçük düşürücü söylem yasaktır.</div></div>
+            <div class="rule-card"><div class="rule-number">2</div><div class="rule-content">Din, dil, ırk ve cinsiyet ayrımı yapmak, siyasi tartışmalara girmek yasaktır.</div></div>
+            <div class="rule-card"><div class="rule-number">3</div><div class="rule-content">Sesli kanallarda bass açmak, insanları rahatsız etmek ve troll yapmak yasaktır.</div></div>
+            <div class="rule-card"><div class="rule-number">4</div><div class="rule-content">Spam, flood ve büyük harf (CAPS) kullanımı yasaktır.</div></div>
+            <div class="rule-card"><div class="rule-number">5</div><div class="rule-content">Başka sunucuların reklamını yapmak veya isimlerini paylaşmak yasaktır.</div></div>
+            <div class="rule-card"><div class="rule-number">6</div><div class="rule-content">Yetkilileri gereksiz yere etiketlemek veya meşgul etmek yasaktır.</div></div>
+            <div class="rule-card"><div class="rule-number">7</div><div class="rule-content">Üçüncü şahıs linkleri ve sosyal medya hesapları paylaşımı yasaktır.</div></div>
+            <div class="rule-card"><div class="rule-number">8</div><div class="rule-content">Kışkırtma, alay etme ve sohbetin huzurunu bozacak davranışlar yasaktır.</div></div>
+        </div>
 
-        <a href="../mute-times/" class="penalty-btn">
-            <i class="fas fa-gavel"></i> CEZA ZAMANLARI
-        </a>
+        <div class="footer-info">
+            <p>"Sunucuya katılan her üye, topluluk düzenini korumak adına bu kuralları kabul etmiş sayılır."</p>
+        </div>
 
-        <a href="../" class="back-link"><i class="fas fa-arrow-left"></i> Geri Dön</a>
+        <div class="action-btns">
+            <a href="../ceza-zamanlari/" class="btn btn-penalty">
+                <i class="fas fa-gavel"></i> CEZA SÜRELERİ
+            </a>
+            <a href="../" class="btn btn-back">
+                <i class="fas fa-arrow-left"></i> MENÜYE DÖN
+            </a>
+        </div>
     </div>
 </body>
 </html>
-
