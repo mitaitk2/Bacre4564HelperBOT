@@ -2,60 +2,82 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Destek Taleplerim</title>
+    <title>Destek Taleplerim | Bacre4564</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --p: #2ecc71; --bg: #f4f7f6; }
         body { font-family: sans-serif; background: var(--bg); margin: 0; padding: 20px; }
-        .nav { background: white; padding: 15px 40px; border-bottom: 1px solid #eee; margin-bottom: 30px; }
+        .nav { background: white; padding: 15px 40px; border-bottom: 1px solid #eee; margin-bottom: 30px; color: #888; font-size: 0.9rem; }
         .container { max-width: 1100px; margin: 0 auto; }
-        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .btn-add { background: var(--p); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; }
-        table { width: 100%; background: white; border-collapse: collapse; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        th { background: #f8f9fa; padding: 15px; text-align: left; color: #888; font-size: 0.8rem; }
-        td { padding: 18px 15px; border-bottom: 1px solid #eee; }
-        .status-open { background: #dcfce7; color: #16a34a; padding: 5px 10px; border-radius: 15px; font-weight: bold; font-size: 0.8rem; }
-        .status-closed { background: #fee2e2; color: #ef4444; padding: 5px 10px; border-radius: 15px; font-weight: bold; font-size: 0.8rem; }
-        .footer-banner { background: var(--p); color: white; padding: 30px; border-radius: 15px; margin-top: 30px; display: flex; justify-content: space-between; align-items: center; }
-        .heads img { width: 40px; height: 40px; border-radius: 5px; margin-left: 5px; border: 2px solid rgba(255,255,255,0.2); }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .btn-add { background: var(--p); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn-add:hover { opacity: 0.9; transform: translateY(-2px); }
+        table { width: 100%; background: white; border-collapse: collapse; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        th { background: #f8f9fa; padding: 18px; text-align: left; color: #7f8c8d; font-size: 0.8rem; text-transform: uppercase; border-bottom: 2px solid #eee; }
+        td { padding: 20px 18px; border-bottom: 1px solid #f0f0f0; color: #333; font-size: 0.95rem; }
+        .status-open { background: #dcfce7; color: #16a34a; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        .status-closed { background: #fee2e2; color: #ef4444; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        .btn-delete { color: #ef4444; border: none; background: none; cursor: pointer; font-size: 1.1rem; transition: 0.2s; }
+        .btn-delete:hover { transform: scale(1.2); }
     </style>
 </head>
 <body>
     <div class="nav"><i class="fas fa-home"></i> Destek > Destek Talepleri</div>
     <div class="container">
         <div class="top-bar">
-            <h2>Destek Talepleri</h2>
+            <h2 style="margin:0; color: #2c3e50;">Destek Talepleri</h2>
             <a href="index.html" class="btn-add">+ Destek Aç</a>
         </div>
         <table>
-            <thead><tr><th>ID</th><th>BAŞLIK</th><th>KATEGORİ</th><th>DURUM</th><th>İŞLEM</th></tr></thead>
-            <tbody id="tablo"></tbody>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>BAŞLIK</th>
+                    <th>KATEGORİ</th>
+                    <th>DURUM</th>
+                    <th>İŞLEM</th>
+                </tr>
+            </thead>
+            <tbody id="tabloGovdesi">
+                </tbody>
         </table>
-        <div class="footer-banner">
-            <div><strong>Son Kayıtlar</strong><br>Sunucumuza 388.557 oyuncu kayıt oldu!</div>
-            <div class="heads">
-                <img src="https://mc-heads.net/avatar/steve/40"><img src="https://mc-heads.net/avatar/alex/40">
-            </div>
-        </div>
     </div>
+
     <script>
-        function yukle() {
-            const t = document.getElementById('tablo');
+        function talepleriYukle() {
+            const govde = document.getElementById('tabloGovdesi');
             const veriler = JSON.parse(localStorage.getItem('taleplerim')) || [];
-            t.innerHTML = veriler.length === 0 ? "<tr><td colspan='5' style='text-align:center'>Henüz talebiniz yok.</td></tr>" : "";
+            
+            if(veriler.length === 0) {
+                govde.innerHTML = "<tr><td colspan='5' style='text-align:center; padding: 40px; color: #999;'>Henüz bir talebiniz bulunmuyor.</td></tr>";
+                return;
+            }
+
+            govde.innerHTML = "";
             veriler.forEach((v, i) => {
-                t.innerHTML += `<tr><td>${v.id}</td><td>${v.baslik}</td><td>${v.kat}</td>
-                <td><span class="${v.durum === 'Açık' ? 'status-open' : 'status-closed'}">${v.durum}</span></td>
-                <td><button onclick="sil(${i})" style="color:red; border:none; background:none; cursor:pointer"><i class="fas fa-trash"></i></button></td></tr>`;
+                const durumClass = v.durum === 'Açık' ? 'status-open' : 'status-closed';
+                govde.innerHTML += `
+                    <tr>
+                        <td>${v.id}</td>
+                        <td>${v.baslik}</td>
+                        <td>${v.kat}</td>
+                        <td><span class="${durumClass}">${v.durum}</span></td>
+                        <td><button class="btn-delete" onclick="talepSil(${i})"><i class="fas fa-trash"></i></button></td>
+                    </tr>
+                `;
             });
         }
-        function sil(i) {
-            let v = JSON.parse(localStorage.getItem('taleplerim'));
-            v.splice(i, 1);
-            localStorage.setItem('taleplerim', JSON.stringify(v));
-            yukle();
+
+        function talepSil(index) {
+            if(confirm("Bu talebi silmek istediğine emin misin?")) {
+                let veriler = JSON.parse(localStorage.getItem('taleplerim'));
+                veriler.splice(index, 1);
+                localStorage.setItem('taleplerim', JSON.stringify(veriler));
+                talepleriYukle();
+            }
         }
-        yukle();
+
+        talepleriYukle();
     </script>
 </body>
 </html>
