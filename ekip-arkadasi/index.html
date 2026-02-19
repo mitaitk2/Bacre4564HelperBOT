@@ -7,9 +7,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --p: #3498db; --bg: #0f1113; --c: #1c1f22; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; padding: 40px 20px; margin: 0; }
-        .box { max-width: 800px; margin: 0 auto; background: var(--c); padding: 40px; border-radius: 25px; border-top: 5px solid var(--p); box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
-        h2 { text-align: center; color: var(--p); margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Giriş Animasyonu */
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: var(--bg); 
+            color: white; 
+            padding: 40px 20px; 
+            margin: 0; 
+            overflow-x: hidden;
+        }
+
+        /* Arka Plan Glow Efekti */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(52, 152, 219, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .box { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: var(--c); 
+            padding: 40px; 
+            border-radius: 25px; 
+            border-top: 5px solid var(--p); 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            /* Animasyonu Buraya Uyguladık */
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        h2 { text-align: center; color: var(--p); margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 15px rgba(52, 152, 219, 0.2); }
         
         .form-group { margin-bottom: 25px; }
         label { display: block; margin-bottom: 10px; font-weight: bold; color: #ccc; font-size: 0.95rem; }
@@ -19,7 +62,7 @@
             padding: 15px; border-radius: 12px; color: white; box-sizing: border-box; 
             outline: none; transition: 0.3s; font-family: inherit;
         }
-        input:focus, select:focus, textarea:focus { border-color: var(--p); background: #2a2e33; }
+        input:focus, select:focus, textarea:focus { border-color: var(--p); background: #2a2e33; box-shadow: 0 0 10px rgba(52, 152, 219, 0.1); }
         
         .apply-btn { 
             background: var(--p); color: white; border: none; width: 100%; 
@@ -29,9 +72,13 @@
         .apply-btn:hover { background: #2980b9; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3); }
         
         .section-title { color: var(--p); border-bottom: 1px solid rgba(52, 152, 219, 0.2); padding-bottom: 10px; margin-bottom: 20px; margin-top: 40px; font-size: 1.2rem; }
+
+        .back-link { display: block; text-align: center; margin-top: 25px; color: #666; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .back-link:hover { color: var(--p); }
     </style>
 </head>
 <body>
+    <div class="bg-glow"></div>
 
     <div class="box">
         <h2><i class="fas fa-file-alt"></i> YETKİLİ BAŞVURU FORMU</h2>
@@ -60,7 +107,7 @@
         </div>
 
         <div class="form-group">
-            <label>Discord İsmin</label>
+            <label>Oyun Nickin</label>
             <input type="text" id="oyun_nick" placeholder="Yanıtınız">
         </div>
 
@@ -145,17 +192,20 @@
         <button class="apply-btn" onclick="basvuruYap()">
             <i class="fas fa-check-circle"></i> BAŞVURUYU GÖNDER
         </button>
+
+        <a href="../" class="back-link"><i class="fas fa-arrow-left"></i> Vazgeç ve Ana Sayfaya Dön</a>
     </div>
 
     <script>
         function basvuruYap() {
             const ad = document.getElementById('adsoyad').value;
-            if(!ad) return alert("Lütfen Ad Soyad alanını doldurun!");
+            const discord = document.getElementById('discord_nick').value;
+            
+            if(!ad || !discord) return alert("Lütfen gerekli alanları (Ad Soyad ve Discord) doldurun!");
             
             alert("Başvurunuz Bacre4564 yönetimine başarıyla iletildi!");
             window.location.href = "../";
         }
     </script>
-
 </body>
 </html>
