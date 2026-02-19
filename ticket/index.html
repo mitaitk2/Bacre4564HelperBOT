@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bacre4564HelperBOT Destek Talepi</title>
+    <title>Bacre4564HelperBOT Destek Talebi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { 
@@ -13,15 +13,27 @@
             --text-dim: #a0a0a0;
         }
 
+        /* Yeni Akıcı Animasyon */
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
         body { 
             font-family: 'Poppins', sans-serif; 
             background: var(--bg); 
             color: white; 
             margin: 0; 
             padding: 20px;
+            overflow-x: hidden;
         }
 
-        /* Arka Plan Işıltısı */
         .bg-glow {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -32,9 +44,10 @@
         .container {
             max-width: 900px;
             margin: 60px auto;
+            /* Ana konteynere animasyon ekledik */
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
 
-        /* Üst Kısım */
         .header-flex {
             display: flex;
             justify-content: space-between;
@@ -79,14 +92,14 @@
             justify-content: space-between;
             align-items: center;
             transition: 0.3s;
-            animation: fadeIn 0.5s ease;
+            /* JS ile yüklenen her item için animasyon */
+            animation: fadeInUp 0.5s ease forwards;
         }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .ticket-item:hover {
             border-color: var(--primary);
             background: rgba(255,255,255,0.02);
+            transform: scale(1.01);
         }
 
         .ticket-main {
@@ -140,13 +153,13 @@
             color: white;
         }
 
-        /* Boş Liste Durumu */
         .empty-box {
             text-align: center;
             padding: 80px 40px;
             background: var(--card-bg);
             border-radius: 25px;
             border: 1px dashed rgba(255,255,255,0.1);
+            animation: fadeInUp 0.7s ease;
         }
 
         .empty-box i { font-size: 4rem; color: #333; margin-bottom: 20px; }
@@ -166,6 +179,10 @@
 
         <div id="list-container">
             </div>
+
+        <a href="../" style="display:block; text-align:center; margin-top:30px; color:#666; text-decoration:none; font-size: 0.9rem;">
+            <i class="fas fa-arrow-left"></i> Ana Menüye Dön
+        </a>
     </div>
 
     <script>
@@ -199,7 +216,7 @@
                         </button>
                     </div>
                 </div>
-            `).reverse().join(''); // En yeni en üstte görünsün
+            `).reverse().join('');
         }
 
         function removeTicket(i) {
