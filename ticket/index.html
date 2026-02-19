@@ -3,158 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bacre4564HelperBOT Yetkili Başvurusu</title>
+    <title>Destek Paneli | Bacre4564</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --p: #3498db; --bg: #0f1113; --c: #1c1f22; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; padding: 40px 20px; margin: 0; }
-        .box { max-width: 800px; margin: 0 auto; background: var(--c); padding: 40px; border-radius: 25px; border-top: 5px solid var(--p); box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
-        h2 { text-align: center; color: var(--p); margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; }
-        
-        .form-group { margin-bottom: 25px; }
-        label { display: block; margin-bottom: 10px; font-weight: bold; color: #ccc; font-size: 0.95rem; }
-        
-        input, select, textarea { 
-            width: 100%; background: #25282c; border: 1px solid rgba(255,255,255,0.05); 
-            padding: 15px; border-radius: 12px; color: white; box-sizing: border-box; 
-            outline: none; transition: 0.3s; font-family: inherit;
+        :root {
+            --primary: #2ecc71;
+            --dark-bg: #1a1c1e;
+            --card-bg: #25282c;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
         }
-        input:focus, select:focus, textarea:focus { border-color: var(--p); background: #2a2e33; }
-        
-        .apply-btn { 
-            background: var(--p); color: white; border: none; width: 100%; 
-            padding: 20px; border-radius: 12px; font-weight: bold; cursor: pointer; 
-            margin-top: 30px; transition: 0.3s; font-size: 1.1rem; text-transform: uppercase;
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
         }
-        .apply-btn:hover { background: #2980b9; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3); }
-        
-        .section-title { color: var(--p); border-bottom: 1px solid rgba(52, 152, 219, 0.2); padding-bottom: 10px; margin-bottom: 20px; margin-top: 40px; font-size: 1.2rem; }
+
+        /* Arka Plan Glow Efekti */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(46, 204, 113, 0.08) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+        /* Üst Başlık ve Buton */
+        .header-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .header-area h1 {
+            font-size: 2rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-create {
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.2);
+        }
+
+        .btn-create:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+        }
+
+        /* Ticket Kartları */
+        .ticket-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            align-items: center;
+            gap: 20px;
+            transition: 0.3s;
+        }
+
+        .ticket-card:hover {
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .ticket-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .ticket-info h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .ticket-info p {
+            margin: 5px 0 0;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        .status-badge {
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .status-open { background: rgba(46, 204, 113, 0.1); color: var(--primary); border: 1px solid var(--primary); }
+
+        .action-btn {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-dim);
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .action-btn:hover {
+            color: #e74c3c;
+            border-color: #e74c3c;
+            background: rgba(231, 76, 60, 0.05);
+        }
+
+        /* Boş Durum */
+        .empty-state {
+            text-align: center;
+            padding: 100px 20px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        .empty-state i { font-size: 4rem; color: var(--text-dim); margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="box">
-        <h2><i class="fas fa-file-alt"></i> YETKİLİ BAŞVURU FORMU</h2>
+    <div class="bg-glow"></div>
 
-        <div class="form-group">
-            <label>Başvuru Yapmak İstediğin Bölüm</label>
-            <select id="bolum">
-                <option value="" disabled selected>Seçiniz...</option>
-                <option value="MitaSkyBlock">MitaSkyBlock (yakında...)</option>
-                <option value="TekBlok">TekBlok (yakında...)</option>
-                <option value="MitaSurvival">MitaSurvival</option>
-                <option value="Discord">Discord Yetkilisi</option>
-            </select>
+    <div class="container">
+        <div class="header-area">
+            <h1><i class="fas fa-ticket-alt" style="color: var(--primary)"></i> Destekler</h1>
+            <a href="submit/" class="btn-create">
+                <i class="fas fa-plus"></i> Yeni Talep Oluştur
+            </a>
         </div>
 
-        <div class="section-title">Kişisel Bilgiler</div>
-
-        <div class="form-group">
-            <label>Ad Soyad</label>
-            <input type="text" id="adsoyad" placeholder="Yanıtınız">
-        </div>
-
-        <div class="form-group">
-            <label>Yaş</label>
-            <input type="number" id="yas" placeholder="Yanıtınız">
-        </div>
-
-        <div class="form-group">
-            <label>Discord İsmin</label>
-            <input type="text" id="oyun_nick" placeholder="Yanıtınız">
-        </div>
-
-        <div class="form-group">
-            <label>Discord İsmin (Kullanılması zorunlu)</label>
-            <input type="text" id="discord_nick" placeholder="Örn: bacre_user">
-        </div>
-
-        <div class="form-group">
-            <label>Mikrofonun bulunmakta mı? (Bulunması zorunlu)</label>
-            <select id="mikrofon">
-                <option value="Evet">Evet</option>
-                <option value="Hayır">Hayır</option>
-            </select>
-        </div>
-
-        <div class="section-title">Aktiflik ve Deneyim</div>
-
-        <div class="form-group">
-            <label>Günlük ortalama aktiflik süren ne kadar?</label>
-            <input type="text" id="online_sure" placeholder="Örn: 5-6 Saat">
-        </div>
-
-        <div class="form-group">
-            <label>Aktif olduğun zaman dilimi?</label>
-            <select id="zaman_dilimi">
-                <option value="Sabah">Sabah</option>
-                <option value="Öğlen">Öğlen</option>
-                <option value="Akşam">Akşam</option>
-                <option value="Gece">Gece</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Discord'da ne zamandan bu yana kadar bulunuyorsun?</label>
-            <input type="text" id="oyun_baslangic" placeholder="Yanıtınız">
-        </div>
-
-        <div class="form-group">
-            <label>Yer almak istediğin görevi ne kadar iyi biliyorsun?</label>
-            <select id="bilgi_duzeyi">
-                <option value="Çok iyi">Çok iyi</option>
-                <option value="İyi">İyi</option>
-                <option value="Orta düzey">Orta düzey</option>
-                <option value="Normal">Normal</option>
-                <option value="İlk defa">İlk defa</option>
-            </select>
-        </div>
-
-        <div class="section-title">Değerlendirme Soruları</div>
-
-        <div class="form-group">
-            <label>Neden Biz?</label>
-            <textarea id="neden_biz" rows="3" placeholder="Yanıtınız"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Neden seni seçmeliyiz?</label>
-            <textarea id="neden_sen" rows="3" placeholder="Yanıtınız"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Oyuncumuz uyguladığınız muteye itirazda bulundu ne yaparsınız?</label>
-            <textarea id="soru1" rows="3" placeholder="Yanıtınız"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Oyuncularımızdan biri sizlere küfür etti ve oyun içerisinden mutelediniz, discord dm üzerinden söylemlerine devam etti ne yaparsınız?</label>
-            <textarea id="soru2" rows="3" placeholder="Yanıtınız"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Yetkili olduğunuz oyun moduyla ilgili bir oyuncu bazı eleştirilerde ve bazı tavsiyelerde bulundu ne yaparsınız?</label>
-            <textarea id="soru3" rows="3" placeholder="Yanıtınız"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Yetkili olduğunuz süreçte sizlerin yetkisinin yetmediği bir durumla karşılaştınız ne yaparsınız?</label>
-            <textarea id="soru4" rows="3" placeholder="Yanıtınız"></textarea>
-        </div>
-
-        <button class="apply-btn" onclick="basvuruYap()">
-            <i class="fas fa-check-circle"></i> BAŞVURUYU GÖNDER
-        </button>
+        <div id="ticket-list">
+            </div>
     </div>
 
     <script>
-        function basvuruYap() {
-            const ad = document.getElementById('adsoyad').value;
-            if(!ad) return alert("Lütfen Ad Soyad alanını doldurun!");
-            
-            alert("Başvurunuz Bacre4564 yönetimine başarıyla iletildi!");
-            window.location.href = "../";
+        function renderTickets() {
+            const ticketContainer = document.getElementById('ticket-list');
+            const tickets = JSON.parse(localStorage.getItem('bacre_tickets')) || [];
+
+            if (tickets.length === 0) {
+                ticketContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <h3>Henüz bir talebiniz yok</h3>
+                        <p>Teknik bir sorun mu yaşıyorsunuz? Yeni bir talep oluşturarak bize bildirin.</p>
+                    </div>`;
+                return;
+            }
+
+            ticketContainer.innerHTML = tickets.map((t, index) => `
+                <div class="ticket-card">
+                    <div class="ticket-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <div class="ticket-info">
+                        <h3>${t.subject}</h3>
+                        <p>ID: ${t.id} • Oluşturulma: Yeni</p>
+                    </div>
+                    <div class="status-badge status-open">Açık</div>
+                    <button class="action-btn" onclick="deleteTicket(${index})">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            `).join('');
         }
+
+        function deleteTicket(index) {
+            let tickets = JSON.parse(localStorage.getItem('bacre_tickets'));
+            tickets.splice(index, 1);
+            localStorage.setItem('bacre_tickets', JSON.stringify(tickets));
+            renderTickets();
+        }
+
+        // Sayfa yüklendiğinde render et
+        renderTickets();
     </script>
 
 </body>
