@@ -6,32 +6,163 @@
     <title>Bacre4564HelperBOT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --p: #2ecc71; --bg: #0f1113; --c: #1c1f22; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
-        .hero { padding: 80px 20px; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://wallpaperaccess.com/full/1271374.jpg'); background-size: cover; border-bottom: 3px solid var(--p); }
-        .grid { max-width: 1000px; margin: -40px auto 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 0 20px; width: 100%; box-sizing: border-box; }
-        .card { background: var(--c); padding: 40px; border-radius: 20px; text-decoration: none; color: white; transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
-        .card:hover { transform: translateY(-10px); border-color: var(--p); box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2); }
-        .card i { font-size: 3rem; color: var(--p); margin-bottom: 20px; }
-        h1 { margin: 0; font-size: 2.5rem; letter-spacing: 2px; }
+        :root {
+            --primary: #2ecc71;
+            --secondary: #3498db;
+            --dark-bg: #1a1c1e;
+            --card-bg: #25282c;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Arka Plan Efekti */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Navbar */
+        nav {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; }
+
+        /* Ana Bölüm */
+        .hero {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 { font-size: 4rem; margin: 0; text-transform: uppercase; }
+        .hero p { color: var(--text-dim); font-size: 1.2rem; margin-top: 10px; }
+
+        /* Kart Konteyner */
+        .grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            padding: 40px 20px;
+        }
+
+        /* Gelişmiş Kart Tasarımı */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.02);
+            border-color: var(--primary);
+        }
+
+        .card:hover::before { transform: scaleX(1); }
+
+        .card i {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .card h3 { font-size: 1.8rem; margin: 10px 0; }
+        .card p { color: var(--text-dim); line-height: 1.6; }
+
+        /* İstatistikler */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box { text-align: center; }
+        .stat-box h2 { font-size: 3rem; margin: 0; color: var(--primary); }
+        .stat-box p { color: var(--text-dim); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+
+        footer { text-align: center; padding: 60px; color: var(--text-dim); font-size: 0.9rem; }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <h1>BACRE4564HELPERBOT</h1>
-        <p>Yönetim ve Destek Merhezi</p>
-    </div>
+
+    <div class="bg-glow"></div>
+
+    <nav>
+        <div class="logo">BACRE4564</div>
+        <div class="status-indicator">
+            <span style="color: var(--primary)">●</span> SUNUCU AKTİF
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Yardım Merkezi</h1>
+        <p>Bacre4564HelperBOT dünyasında buradan destek al.</p>
+        
+        <div class="stats-container">
+            <div class="stat-box"><h2>80</h2><p>ÜYE</p></div>
+            <div class="stat-box"><h2>24/7</h2><p>DESTEK</p></div>
+            <div class="stat-box"><h2>5ms</h2><p>GECİKME</p></div>
+        </div>
+    </section>
+
     <div class="grid">
-        <a href="basvuru/index.html" class="card">
-            <i class="fas fa-user-shield"></i>
-            <h3>Yetkili Başvurusu</h3>
-            <p>Ekibimize katılmak için başvur.</p>
+        <a href="basvuru/" class="card">
+            <i class="fas fa-file-signature"></i>
+            <h3>Ekip Başvurusu</h3>
+            <p>Yönetim kadromuzda yer almak ister misin? Formu doldur ve değerlendirmeye alının.</p>
         </a>
-        <a href="destek/talepler.html" class="card">
+
+        <a href="destek/" class="card">
             <i class="fas fa-headset"></i>
             <h3>Destek Sistemi</h3>
-            <p>Taleplerini yönet ve yardım al.</p>
+            <p>Hataları bildir, taleplerini takip et ve teknik ekibimizle iletişime geç.</p>
         </a>
+
+        <div class="card">
+            <i class="fas fa-shield-halved"></i>
+            <h3>Sunucu Kuralları</h3>
+            <p>Ceza almamak için topluluk kurallarını ve oyun içi işleyişi buradan incele.</p>
+        </div>
     </div>
+
+    <footer>
+        <p>&copy;Bacre464HelperBOT sitesi.</p>
+    </footer>
+
 </body>
 </html>
