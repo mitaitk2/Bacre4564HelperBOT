@@ -7,29 +7,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --p: #2ecc71; --bg: #0f1113; --c: #1c1f22; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; }
-        .hero { padding: 100px 20px; text-align: center; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://wallpaperaccess.com/full/1271374.jpg'); background-size: cover; border-bottom: 3px solid var(--p); }
-        .grid { max-width: 1200px; margin: -50px auto 50px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 0 20px; }
-        .card { background: var(--c); padding: 40px; border-radius: 20px; text-decoration: none; color: white; transition: 0.4s; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
-        .card:hover { transform: translateY(-10px); border-color: var(--p); box-shadow: 0 10px 30px rgba(46, 204, 113, 0.1); }
-        .card i { font-size: 3.5rem; color: var(--p); margin-bottom: 25px; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        .hero { padding: 80px 20px; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://wallpaperaccess.com/full/1271374.jpg'); background-size: cover; border-bottom: 3px solid var(--p); }
+        .grid { max-width: 1000px; margin: -40px auto 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 0 20px; width: 100%; box-sizing: border-box; }
+        .card { background: var(--c); padding: 40px; border-radius: 20px; text-decoration: none; color: white; transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .card:hover { transform: translateY(-10px); border-color: var(--p); box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2); }
+        .card i { font-size: 3rem; color: var(--p); margin-bottom: 20px; }
+        h1 { margin: 0; font-size: 2.5rem; letter-spacing: 2px; }
     </style>
 </head>
 <body>
     <div class="hero">
-        <h1>BACRE4564HelperBOT</h1>
-        <p>BacreH4564HelperBOT Yönetim ve Destek Merkezi</p>
+        <h1>BACRE4564HELPERBOT</h1>
+        <p>Yönetim ve Destek Merhezi</p>
     </div>
     <div class="grid">
-        <a href="basvuru/" class="card">
+        <a href="basvuru/index.html" class="card">
             <i class="fas fa-user-shield"></i>
             <h3>Yetkili Başvurusu</h3>
-            <p>Ekibimize katılmak için formu doldur.</p>
+            <p>Ekibimize katılmak için başvur.</p>
         </a>
         <a href="destek/talepler.html" class="card">
             <i class="fas fa-headset"></i>
             <h3>Destek Sistemi</h3>
-            <p>Taleplerini görüntüle ve yeni destek oluştur.</p>
+            <p>Taleplerini yönet ve yardım al.</p>
         </a>
     </div>
 </body>
