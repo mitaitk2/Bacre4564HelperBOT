@@ -13,21 +13,22 @@
         .rules-container { max-width: 800px; margin: 0 auto; background: var(--c); padding: 40px; border-radius: 30px; border-left: 6px solid var(--primary); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         
         .header { text-align: center; margin-bottom: 40px; }
-        .header h1 { font-size: 2.2rem; color: var(--primary); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-        .header p { color: var(--text-dim); }
+        .header h1 { font-size: 2rem; color: var(--primary); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .header p { color: var(--text-dim); font-size: 0.9rem; }
 
-        .rule-group { display: flex; flex-direction: column; gap: 15px; }
+        .rule-group { display: flex; flex-direction: column; gap: 12px; }
         .rule-card { 
-            background: rgba(255,255,255,0.02); padding: 20px 25px; border-radius: 15px; 
-            border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 20px;
+            background: rgba(255,255,255,0.02); padding: 18px 25px; border-radius: 15px; 
+            border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 15px;
             transition: 0.3s;
         }
         .rule-card:hover { background: rgba(114, 137, 218, 0.05); border-color: var(--primary); transform: translateX(5px); }
-        .rule-number { background: var(--primary); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; flex-shrink: 0; }
-        .rule-content { font-size: 1rem; line-height: 1.5; color: #eee; }
+        .rule-icon { color: var(--primary); font-size: 1.1rem; flex-shrink: 0; }
+        .rule-content { font-size: 0.95rem; line-height: 1.5; color: #eee; }
 
-        .footer-info { margin-top: 40px; padding: 25px; background: rgba(114, 137, 218, 0.05); border-radius: 15px; text-align: center; border: 1px dashed rgba(114, 137, 218, 0.3); }
-        .footer-info p { margin: 0; color: var(--text-dim); font-size: 0.9rem; font-style: italic; }
+        .footer-note { margin-top: 30px; padding: 20px; background: rgba(114, 137, 218, 0.05); border-radius: 15px; text-align: center; }
+        .footer-note p { margin: 5px 0; font-size: 0.9rem; color: #fff; }
+        .footer-note span { display: block; margin-top: 10px; color: var(--text-dim); font-style: italic; font-size: 0.8rem; }
 
         .action-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
         .btn { padding: 18px; border-radius: 12px; text-decoration: none; font-weight: bold; text-align: center; transition: 0.3s; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
@@ -44,22 +45,28 @@
     <div class="rules-container">
         <div class="header">
             <h1><i class="fab fa-discord"></i> Discord Kuralları</h1>
-            <p>Bacre4564 Topluluğu Genel Davranış İlkeleri</p>
+            <p>bacre4564HelperBOT - Discord Sunucusu Kuralları</p>
         </div>
         
         <div class="rule-group">
-            <div class="rule-card"><div class="rule-number">1</div><div class="rule-content">Küfür, argo, hakaret ve her türlü küçük düşürücü söylem yasaktır.</div></div>
-            <div class="rule-card"><div class="rule-number">2</div><div class="rule-content">Din, dil, ırk ve cinsiyet ayrımı yapmak, siyasi tartışmalara girmek yasaktır.</div></div>
-            <div class="rule-card"><div class="rule-number">3</div><div class="rule-content">Sesli kanallarda bass açmak, insanları rahatsız etmek ve troll yapmak yasaktır.</div></div>
-            <div class="rule-card"><div class="rule-number">4</div><div class="rule-content">Spam, flood ve büyük harf (CAPS) kullanımı yasaktır.</div></div>
-            <div class="rule-card"><div class="rule-number">5</div><div class="rule-content">Başka sunucuların reklamını yapmak veya isimlerini paylaşmak yasaktır.</div></div>
-            <div class="rule-card"><div class="rule-number">6</div><div class="rule-content">Yetkilileri gereksiz yere etiketlemek veya meşgul etmek yasaktır.</div></div>
-            <div class="rule-card"><div class="rule-number">7</div><div class="rule-content">Üçüncü şahıs linkleri ve sosyal medya hesapları paylaşımı yasaktır.</div></div>
-            <div class="rule-card"><div class="rule-number">8</div><div class="rule-content">Kışkırtma, alay etme ve sohbetin huzurunu bozacak davranışlar yasaktır.</div></div>
+            <div class="rule-card"><i class="fas fa-exclamation-circle rule-icon"></i><div class="rule-content">Küfür, hakaret, aşağılama, tartışma başlatma, kışkırtma ve siyaset yapmak yasaktır!</div></div>
+            <div class="rule-card"><i class="fas fa-user-shield rule-icon"></i><div class="rule-content">Sunucuya ve kuruculara hakaret etmek, küfür etmek yasaktır!</div></div>
+            <div class="rule-card"><i class="fas fa-ad rule-icon"></i><div class="rule-content">YouTube, Instagram ve başka sunucuların reklamını yapmak yasaktır!</div></div>
+            <div class="rule-card"><i class="fas fa-envelope-open-text rule-icon"></i><div class="rule-content">Kullanıcıları özel mesaj yolu ile farklı platformlara çekmek, reklam yapmak yasaktır!</div></div>
+            <div class="rule-card"><i class="fas fa-image rule-icon"></i><div class="rule-content">Profil fotoğrafında veya isminde NSFW (+18), küfür içerikli öğelerin olması yasaktır!</div></div>
+            <div class="rule-card"><i class="fas fa-shopping-cart rule-icon"></i><div class="rule-content">Satış yapmak, satışa yönelik eylemlerde bulunmak yasaktır.</div></div>
+            <div class="rule-card"><i class="fas fa-folder rule-icon"></i><div class="rule-content">Kanalları ve kategorileri amacı dışında kullanmak yasaktır!</div></div>
+            <div class="rule-card"><i class="fas fa-venus-mars rule-icon"></i><div class="rule-content">NSFW tarzı cinsel içerik paylaşımı yasaktır!</div></div>
+            <div class="rule-card"><i class="fas fa-comment-slash rule-icon"></i><div class="rule-content">Kanalları kirletecek düzeyde flood/spam yapmak yasaktır!</div></div>
+            <div class="rule-card"><i class="fas fa-globe rule-icon"></i><div class="rule-content">Din, dil ve ırk ayrımı yapmak yasaktır!</div></div>
+            <div class="rule-card"><i class="fas fa-link rule-icon"></i><div class="rule-content">Para kazandırıcı, zararlı yazılım ve jumpscare içeren bağlantı paylaşımı yasaktır!</div></div>
+            <div class="rule-card"><i class="fas fa-share-alt rule-icon"></i><div class="rule-content">Herhangi bir YouTube, Instagram vb. bağlantı paylaşmak yasaktır!</div></div>
+            <div class="rule-card"><i class="fas fa-smile-wink rule-icon"></i><div class="rule-content">Cinsel içerikli şakalar yapmak yasaktır!</div></div>
         </div>
 
-        <div class="footer-info">
-            <p>"Sunucuya katılan her üye, topluluk düzenini korumak adına bu kuralları kabul etmiş sayılır."</p>
+        <div class="footer-note">
+            <p><strong>`!`</strong> Bu kuralların ihlâli durumunda gerekli yaptırım uygulanır.</p>
+            <span>*Sunucuya katılan herkes kuralları okumuş ve kabul etmiş sayılır.*</span>
         </div>
 
         <div class="action-btns">
