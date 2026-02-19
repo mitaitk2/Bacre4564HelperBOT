@@ -8,48 +8,29 @@
     <style>
         :root { --p: #2ecc71; --bg: #0f1113; --c: #1c1f22; }
         body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; }
-        .hero { padding: 100px 20px; text-align: center; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://wallpaperaccess.com/full/1271374.jpg'); background-size: cover; background-position: center; border-bottom: 3px solid var(--p); }
-        .hero h1 { font-size: 4rem; color: var(--p); margin: 0; text-shadow: 0 0 20px rgba(46, 204, 113, 0.4); }
+        .hero { padding: 100px 20px; text-align: center; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://wallpaperaccess.com/full/1271374.jpg'); background-size: cover; border-bottom: 3px solid var(--p); }
         .grid { max-width: 1200px; margin: -50px auto 50px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 0 20px; }
         .card { background: var(--c); padding: 40px; border-radius: 20px; text-decoration: none; color: white; transition: 0.4s; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
         .card:hover { transform: translateY(-10px); border-color: var(--p); box-shadow: 0 10px 30px rgba(46, 204, 113, 0.1); }
         .card i { font-size: 3.5rem; color: var(--p); margin-bottom: 25px; }
-        .stats { display: flex; justify-content: center; gap: 60px; padding: 40px; flex-wrap: wrap; }
-        .stat h2 { color: var(--p); font-size: 3rem; margin: 0; }
-        .stat p { color: #888; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; }
     </style>
 </head>
 <body>
     <div class="hero">
-        <h1>BACRE4564HELPERBOT</h1>
-        <p>Bacre4564HelperBOT Yönetim ve Destek Merkezi</p>
+        <h1>BACRE4564HelperBOT</h1>
+        <p>BacreH4564HelperBOT Yönetim ve Destek Merkezi</p>
     </div>
-
     <div class="grid">
         <a href="basvuru/" class="card">
             <i class="fas fa-user-shield"></i>
             <h3>Yetkili Başvurusu</h3>
-            <p>Ekibimize katılmak ve sunucuyu yönetmek için formu doldur.</p>
+            <p>Ekibimize katılmak için formu doldur.</p>
         </a>
-
-        <a href="destek/" class="card">
+        <a href="destek/talepler.html" class="card">
             <i class="fas fa-headset"></i>
-            <h3>Destek Talepleri</h3>
-            <p>Hataları bildir ve geçmiş taleplerini buradan kontrol et.</p>
+            <h3>Destek Sistemi</h3>
+            <p>Taleplerini görüntüle ve yeni destek oluştur.</p>
         </a>
-
-        <div class="card">
-            <i class="fas fa-book"></i>
-            <h3>Bilgi Merkezi</h3>
-            <p>Sunucu kuralları ve sunucu rehberine göz atabilirsin.</p>
-        </div>
-    </div>
-
-    <div class="stats">
-        <div class="stat"><h2>80</h2><p>Oyuncu</p></div>
-        <div class="stat"><h2>24/7</h2><p>Aktif</p></div>
-        <div class="stat"><h2>5ms</h2><p>Lag</p></div>
     </div>
 </body>
 </html>
-
