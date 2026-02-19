@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bacre4564HelperBOT Kurallar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #2ecc71; --bg: #0f1113; --card-bg: #1c1f22; --text-dim: #a0a0a0; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.1) 0%, transparent 50%); z-index: -1; }
+        .menu-container { text-align: center; width: 90%; max-width: 800px; }
+        h1 { font-size: 2.5rem; margin-bottom: 40px; text-transform: uppercase; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .rule-card { 
+            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; 
+            text-decoration: none; color: white; transition: 0.3s;
+        }
+        .rule-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .rule-card i { font-size: 3rem; color: var(--primary); margin-bottom: 15px; display: block; }
+        .back { margin-top: 40px; display: inline-block; color: var(--text-dim); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="menu-container">
+        <h1>Bacre4564HelperBOT Kurallar</h1>
+        <div class="grid">
+            <a href="discord/" class="rule-card">
+                <i class="fab fa-discord"></i>
+                <h3>Discord Kurallarını İncele.</h3>
+                <p>Oyun Kurallarını İncele.</p>
+            </a>
+            <a href="game/" class="rule-card">
+                <i class="fas fa-gamepad"></i>
+                <h3>Oyun Kuralları</h3>
+                <p>Sunucu içi kuralları incele.</p>
+            </a>
+        </div>
+        <a href="../" class="back"><i class="fas fa-arrow-left"></i> Geri Dön</a>
+    </div>
+</body>
+</html>
