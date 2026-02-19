@@ -3,176 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ekip Arkadaşı Başvurusu | Bacre4564</title>
+    <title>Destek Taleplerim | Bacre4564</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f7f6;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        .form-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-        h2 { text-align: center; color: #2c3e50; margin-bottom: 30px; }
-        .input-group { margin-bottom: 25px; display: flex; align-items: flex-start; }
-        .input-group label {
-            width: 300px;
-            font-weight: 600;
-            text-align: right;
-            padding-right: 20px;
-            margin-top: 10px;
-            font-size: 0.95rem;
-            color: #555;
-        }
-        .input-group input, .input-group select, .input-group textarea {
-            flex: 1;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            background-color: #fafafa;
-            font-size: 1rem;
-        }
-        textarea { resize: vertical; min-height: 80px; }
-        .submit-btn {
-            background-color: #2ecc71;
-            color: white;
-            border: none;
-            padding: 18px;
-            width: 100%;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-            margin-top: 20px;
-        }
-        .submit-btn:hover { background-color: #27ae60; }
-        .back-link { display: block; text-align: center; margin-top: 20px; color: #7f8c8d; text-decoration: none; }
+        :root { --p: #2ecc71; --bg: #0f1113; --c: #1c1f22; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; padding: 40px 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .btn-new { background: var(--p); color: white; padding: 12px 25px; border-radius: 12px; text-decoration: none; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.2); }
+        .btn-new:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4); }
+        .table-wrapper { background: var(--c); border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: rgba(255,255,255,0.02); padding: 20px; text-align: left; color: var(--p); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .status { padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+        .open { background: rgba(46, 204, 113, 0.1); color: #2ecc71; }
+        .closed { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
+        .delete-btn { color: #e74c3c; cursor: pointer; border: none; background: none; transition: 0.2s; }
+        .delete-btn:hover { transform: scale(1.2); }
     </style>
 </head>
 <body>
-
-<div class="form-wrapper">
-    <h2>Ekip Arkadaşı Başvuru Formu</h2>
-    
-    <div id="applicationForm">
-        <div class="input-group">
-            <label>Başvuru Yapmak İstediğin Bölüm</label>
-            <select id="bolum">
-                <option value="Discord Yetkilisi">Discord Yetkilisi</option>
-                <option value="MitaSurvival">MitaSurvival</option>
-            </select>
+    <div class="container">
+        <div class="header">
+            <h2><i class="fas fa-ticket-alt" style="color: var(--p)"></i> Destek Taleplerim</h2>
+            <a href="submit/" class="btn-new">+ YENİ TALEP AÇ</a>
         </div>
-
-        <div class="input-group">
-            <label>Ad Soyad</label>
-            <input type="text" id="ad_soyad">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr><th>ID</th><th>BAŞLIK</th><th>DURUM</th><th>İŞLEM</th></tr>
+                </thead>
+                <tbody id="ticketList"></tbody>
+            </table>
         </div>
-
-        <div class="input-group">
-            <label>Yaş</label>
-            <input type="number" id="yas">
-        </div>
-
-        <div class="input-group">
-            <label>Oyun ismin</label>
-            <input type="text" id="oyun_isim">
-        </div>
-
-        <div class="input-group">
-            <label>Discord ismin (Kullanılması Zorunlu)</label>
-            <input type="text" id="discord_isim">
-        </div>
-
-        <div class="input-group">
-            <label>Mikrofonun bulunmakta mı?(Bulunması Zorunlu)</label>
-            <select id="mikrofon">
-                <option value="Evet">Evet</option>
-                <option value="Hayır">Hayır</option>
-            </select>
-        </div>
-
-        <div class="input-group">
-            <label>Günlük ortalama aktiflik süren?</label>
-            <input type="text" id="online_sure">
-        </div>
-
-        <div class="input-group">
-            <label>Aktif olduğun zaman dilimi?</label>
-            <textarea id="zaman_dilimi" placeholder="Örn: Sabah, Öğlen, Akşam..."></textarea>
-        </div>
-
-        <div class="input-group">
-            <label>Neden Biz?</label>
-            <textarea id="neden_biz"></textarea>
-        </div>
-
-        <div class="input-group">
-            <label>Neden seni seçmeliyiz?</label>
-            <textarea id="neden_sen"></textarea>
-        </div>
-
-        <div class="input-group">
-            <label>Oyuncumuz uyguladığınız muteye itirazda bulundu ne yaparsınız?</label>
-            <textarea id="itiraz_senaryo"></textarea>
-        </div>
-
-        <div class="input-group">
-            <label>Oyuncularımızdan biri sizlere küfür etti ve oyun içerisinden mutelediniz, discord dm üzerinden söylemlerine devam etti ne yaparsınız ?</label>
-            <textarea id="kufur_senaryo"></textarea>
-        </div>
-
-        <div class="input-group">
-            <label>Yetkili olduğunuz süreçte sizlerin yetkisinin yetmediği bir durumla karşılaştınız ne yaparsınız ?</label>
-            <textarea id="yetki_yetersiz_senaryo"></textarea>
-        </div>
-
-        <button class="submit-btn" onclick="basvuruGonder()">BAŞVURUYU GÖNDER</button>
     </div>
-    
-    <a href="index.html" class="back-link">Anasayfaya Dön</a>
-</div>
-
-<script>
-    function basvuruGonder() {
-        const webhookURL = "https://discord.com/api/webhooks/1473318101654306919/7ge6xkjKZLEQs9vA-zzx7LzTqY3g5FbqA4A37w14GLof2YuuFhuNrZtbGoye0AUF2VyW";
-        
-        // Verileri topluyoruz
-        const data = {
-            embeds: [{
-                title: "📩 Yeni Ekip Arkadaşı Başvurusu!",
-                color: 3066993,
-                fields: [
-                    { name: "👤 Ad Soyad / Yaş", value: `${document.getElementById('ad_soyad').value} - ${document.getElementById('yas').value}`, inline: true },
-                    { name: "🎮 Oyun & Discord", value: `${document.getElementById('oyun_isim').value} / ${document.getElementById('discord_isim').value}`, inline: true },
-                    { name: "⏰ Online Süre", value: document.getElementById('online_sure').value, inline: true },
-                    { name: "📝 Neden Seni Seçmeliyiz?", value: document.getElementById('neden_sen').value },
-                    { name: "⚖️ Senaryo Cevabı (Yetki Yetersizliği)", value: document.getElementById('yetki_yetersiz_senaryo').value }
-                ],
-                footer: { text: "Bacre4564 Başvuru Sistemi" }
-            }]
-        };
-
-        fetch(webhookURL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        }).then(() => {
-            alert("Başvurunuz başarıyla gönderildi!");
-            window.location.href = "index.html";
-        });
-    }
-</script>
-
+    <script>
+        function loadTickets() {
+            const list = document.getElementById('ticketList');
+            const data = JSON.parse(localStorage.getItem('bacre_tickets')) || [];
+            list.innerHTML = data.length === 0 ? "<tr><td colspan='4' style='text-align:center; opacity:0.5; padding:50px;'>Henüz bir talebiniz bulunmuyor.</td></tr>" : "";
+            data.forEach((t, i) => {
+                list.innerHTML += `<tr>
+                    <td style="color:var(--p)">${t.id}</td>
+                    <td>${t.subject}</td>
+                    <td><span class="status ${t.status === 'Açık' ? 'open' : 'closed'}">${t.status}</span></td>
+                    <td><button class="delete-btn" onclick="removeTicket(${i})"><i class="fas fa-trash"></i></button></td>
+                </tr>`;
+            });
+        }
+        function removeTicket(i) {
+            let data = JSON.parse(localStorage.getItem('bacre_tickets'));
+            data.splice(i, 1);
+            localStorage.setItem('bacre_tickets', JSON.stringify(data));
+            loadTickets();
+        }
+        loadTickets();
+    </script>
 </body>
 </html>
-
-
-
