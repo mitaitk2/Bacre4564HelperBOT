@@ -6,32 +6,43 @@
     <title>Ekip Arkadaşı Başvurusu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --p: #3498db; --bg: #0f1113; --c: #1c1f22; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; padding: 40px 20px; }
-        .box { max-width: 600px; margin: 0 auto; background: var(--c); padding: 40px; border-radius: 25px; border-top: 5px solid var(--p); }
-        input, select, textarea { width: 100%; background: #25282c; border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; color: white; margin: 10px 0; box-sizing: border-box; }
-        .apply-btn { background: var(--p); color: white; border: none; width: 100%; padding: 18px; border-radius: 12px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
-        .apply-btn:hover { background: #2980b9; }
+        :root { --p: #2ecc71; --bg: #0f1113; --c: #1c1f22; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .box { width: 100%; max-width: 600px; background: var(--c); padding: 40px; border-radius: 25px; border-top: 5px solid var(--p); box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        h2 { margin-bottom: 10px; color: var(--p); }
+        input, select, textarea { width: 100%; background: #25282c; border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; color: white; margin: 10px 0; box-sizing: border-box; outline: none; transition: 0.3s; }
+        input:focus, select:focus, textarea:focus { border-color: var(--p); }
+        .apply-btn { background: var(--p); color: white; border: none; width: 100%; padding: 18px; border-radius: 12px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; font-size: 1rem; }
+        .apply-btn:hover { background: #27ae60; transform: translateY(-2px); }
     </style>
 </head>
 <body>
     <div class="box">
         <h2 style="text-align:center"><i class="fas fa-users"></i> Yetkili Başvurusu</h2>
-        <p style="text-align:center; opacity:0.6">Bacre4564 ekibine katılmak için formu doldur.</p>
+        <p style="text-align:center; opacity:0.6; margin-bottom: 25px;">Bacre4564 ekibine katılmak için formu doldur.</p>
+        
         <input type="text" id="nick" placeholder="Oyun İçi Kullanıcı Adın">
         <input type="number" id="age" placeholder="Yaşın">
+        
         <select id="job">
-            <option>DRehber</option>
-            <option>DAsistan</option>
-            <option>DModeratör</option>
-            <option>Discord Yetkilisi</option>
-            <option>Geliştirici</option>
+            <option value="" disabled selected>Başvurmak istediğin yetkiyi seç...</option>
+            <option value="DRehber">DRehber</option>
+            <option value="DAsistan">DAsistan</option>
+            <option value="DModeratör">DModeratör</option>
+            <option value="Discord Yetkilisi">Discord Yetkilisi</option>
+            <option value="Geliştirici">Geliştirici</option>
         </select>
+        
         <textarea id="about" rows="6" placeholder="Bize biraz kendinden bahset..."></textarea>
+        
         <button class="apply-btn" onclick="submitApply()">BAŞVURUYU TAMAMLA</button>
     </div>
+
     <script>
         function submitApply() {
+            const nick = document.getElementById('nick').value;
+            if(!nick) return alert("Lütfen kullanıcı adınızı girin!");
+            
             alert("Başvurunuz başarıyla Discord ekibimize iletildi!");
             window.location.href = "../"; // Ana sayfaya döner
         }
