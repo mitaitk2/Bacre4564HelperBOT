@@ -6,72 +6,41 @@
     <title>Bacre4564HelperBOT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #2ecc71; --dark-bg: #1a1c1e; --card-bg: #25282c; --text-dim: #a0a0a0; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--dark-bg); color: white; margin: 0; overflow-x: hidden; }
-        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.1) 0%, transparent 50%); z-index: -1; }
+        :root { --primary: #2ecc71; --bg: #0f1113; --card: #1c1f22; --text: #a0a0a0; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; overflow-x: hidden; }
+        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.08) 0%, transparent 50%); z-index: -1; }
         
-        nav { padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.2); backdrop-filter: blur(10px); }
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; }
+        nav { padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.3); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; text-shadow: 0 0 15px rgba(46, 204, 113, 0.3); }
         
-        .stats-container { display: flex; justify-content: center; gap: 50px; padding: 60px 20px; text-align: center; }
-        .stat-item h2 { font-size: 2.5rem; color: var(--primary); margin: 0; }
-        .stat-item p { color: var(--text-dim); text-transform: uppercase; font-size: 0.8rem; margin-top: 5px; }
+        .main-content { animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .stats-container { display: flex; justify-content: center; gap: 50px; padding: 60px 20px; }
+        .stat-item h2 { font-size: 2.8rem; color: var(--primary); margin: 0; text-shadow: 0 0 20px rgba(46, 204, 113, 0.2); }
+        .stat-item p { color: var(--text); font-size: 0.8rem; letter-spacing: 1px; }
 
-        .grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 40px 20px; }
-        .card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; text-decoration: none; color: white; transition: 0.4s; position: relative; overflow: hidden; }
-        .card:hover { transform: translateY(-10px); border-color: var(--primary); background: rgba(255,255,255,0.02); }
-        .card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 25px; display: block; }
-        .card h3 { font-size: 1.8rem; margin: 10px 0; }
-        .card p { color: var(--text-dim); line-height: 1.6; font-size: 0.95rem; }
-        
-        footer { text-align: center; padding: 60px; color: var(--text-dim); font-size: 0.9rem; }
+        .grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 20px; }
+        .card { background: var(--card); border: 1px solid rgba(255,255,255,0.05); padding: 40px; border-radius: 24px; text-decoration: none; color: white; transition: 0.4s; position: relative; }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(46, 204, 113, 0.1); }
+        .card i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+        .card h3 { font-size: 1.6rem; margin: 10px 0; }
+        .card p { color: var(--text); font-size: 0.9rem; line-height: 1.6; }
     </style>
 </head>
 <body>
     <div class="bg-glow"></div>
-    
-    <nav>
-        <div class="logo">BACRE4564</div>
-        <div style="color: var(--primary)">● Bot Aktif!</div>
-    </nav>
-
-    <div class="stats-container">
-        <div class="stat-item">
-            <h2>80</h2>
-            <p>ÜYE</p>
+    <nav><div class="logo">BACRE4564</div><div style="color: var(--primary); font-weight: bold;">● Bot Aktif!</div></nav>
+    <div class="main-content">
+        <div class="stats-container">
+            <div class="stat-item"><h2>80</h2><p>ÜYE</p></div>
+            <div class="stat-item"><h2>16/7</h2><p>DESTEK</p></div>
+            <div class="stat-item"><h2>5ms</h2><p>GECİKME</p></div>
         </div>
-        <div class="stat-item">
-            <h2>16/7</h2>
-            <p>DESTEK</p>
-        </div>
-        <div class="stat-item">
-            <h2>5ms</h2>
-            <p>GECİKME</p>
+        <div class="grid">
+            <a href="ekip-arkadasi/" class="card"><i class="fas fa-file-signature"></i><h3>Ekip Başvurusu</h3><p>Yönetim kadromuzda yer almak için hemen başvur.</p></a>
+            <a href="ticket/" class="card"><i class="fas fa-headset"></i><h3>Destek Sistemi</h3><p>Taleplerini ilet ve ekibimizle hızlıca görüş.</p></a>
+            <a href="rules/" class="card"><i class="fas fa-shield-halved"></i><h3>Sunucu Kuralları</h3><p>Topluluk ve oyun kurallarını buradan incele.</p></a>
         </div>
     </div>
-
-    <div class="grid">
-        <a href="ekip-arkadasi/" class="card">
-            <i class="fas fa-file-signature"></i>
-            <h3>Ekip Başvurusu</h3>
-            <p>Yönetim kadromuzda yer almak ister misin? Formu doldur ve değerlendirmeye alının.</p>
-        </a>
-
-        <a href="ticket/" class="card">
-            <i class="fas fa-headset"></i>
-            <h3>Destek Sistemi</h3>
-            <p>Hataları bildir, taleplerini takip et ve teknik ekibimizle iletişime geç.</p>
-        </a>
-
-        <a href="rules/" class="card">
-            <i class="fas fa-shield-halved"></i>
-            <h3>Sunucu Kuralları</h3>
-            <p>Ceza almamak için topluluk kurallarını ve oyun içi işleyişi buradan incele.</p>
-        </a>
-    </div>
-
-    <footer><p>&copy; 2026 Bacre4564HelperBOT Sitesi</p></footer>
 </body>
 </html>
-
-
