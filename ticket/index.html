@@ -2,63 +2,36 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Destek Taleplerim | Bacre4564</title>
+    <title>Destek Taleplerim</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --p: #2ecc71; --bg: #0f1113; --c: #1c1f22; }
         body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; padding: 40px 20px; }
         .container { max-width: 1000px; margin: 0 auto; }
         .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .btn-new { background: var(--p); color: white; padding: 12px 25px; border-radius: 12px; text-decoration: none; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.2); }
-        .btn-new:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4); }
-        .table-wrapper { background: var(--c); border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; }
+        .btn-new { background: var(--p); color: white; padding: 12px 25px; border-radius: 12px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .table-box { background: var(--c); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         table { width: 100%; border-collapse: collapse; }
-        th { background: rgba(255,255,255,0.02); padding: 20px; text-align: left; color: var(--p); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        th { text-align: left; padding: 20px; background: rgba(255,255,255,0.02); color: var(--p); font-size: 0.8rem; text-transform: uppercase; }
         td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.03); }
-        .status { padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
-        .open { background: rgba(46, 204, 113, 0.1); color: #2ecc71; }
-        .closed { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
-        .delete-btn { color: #e74c3c; cursor: pointer; border: none; background: none; transition: 0.2s; }
-        .delete-btn:hover { transform: scale(1.2); }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h2><i class="fas fa-ticket-alt" style="color: var(--p)"></i> Destek Taleplerim</h2>
-            <a href="submit/" class="btn-new">+ YENİ TALEP AÇ</a>
+            <h2>Destek Talepleri</h2>
+            <a href="submit/" class="btn-new">+ YENİ TALEP</a>
         </div>
-        <div class="table-wrapper">
+        <div class="table-box">
             <table>
                 <thead>
-                    <tr><th>ID</th><th>BAŞLIK</th><th>DURUM</th><th>İŞLEM</th></tr>
+                    <tr><th>ID</th><th>BAŞLIK</th><th>DURUM</th></tr>
                 </thead>
-                <tbody id="ticketList"></tbody>
+                <tbody id="list">
+                    <tr><td colspan="3" style="text-align:center; padding: 40px; opacity: 0.5;">Henüz biletiniz bulunmuyor.</td></tr>
+                </tbody>
             </table>
         </div>
     </div>
-    <script>
-        function loadTickets() {
-            const list = document.getElementById('ticketList');
-            const data = JSON.parse(localStorage.getItem('bacre_tickets')) || [];
-            list.innerHTML = data.length === 0 ? "<tr><td colspan='4' style='text-align:center; opacity:0.5; padding:50px;'>Henüz bir talebiniz bulunmuyor.</td></tr>" : "";
-            data.forEach((t, i) => {
-                list.innerHTML += `<tr>
-                    <td style="color:var(--p)">${t.id}</td>
-                    <td>${t.subject}</td>
-                    <td><span class="status ${t.status === 'Açık' ? 'open' : 'closed'}">${t.status}</span></td>
-                    <td><button class="delete-btn" onclick="removeTicket(${i})"><i class="fas fa-trash"></i></button></td>
-                </tr>`;
-            });
-        }
-        function removeTicket(i) {
-            let data = JSON.parse(localStorage.getItem('bacre_tickets'));
-            data.splice(i, 1);
-            localStorage.setItem('bacre_tickets', JSON.stringify(data));
-            loadTickets();
-        }
-        loadTickets();
-    </script>
 </body>
 </html>
