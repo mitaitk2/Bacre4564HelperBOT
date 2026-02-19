@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Bilgi | Bacre4564HelperBOT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --p: #2ecc71; --bg: #0f1113; --c: #1c1f22; --text-dim: #a0a0a0; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; padding: 40px 20px; }
+        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 0%, rgba(46, 204, 113, 0.1) 0%, transparent 50%); z-index: -1; }
+
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        .header { text-align: center; margin-bottom: 50px; animation: fadeInUp 0.6s ease; }
+        .header h1 { color: var(--p); font-size: 2.5rem; text-transform: uppercase; margin-bottom: 10px; }
+        .header p { color: var(--text-dim); }
+
+        /* Kategori Grid Yapısı */
+        .commands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+
+        .cat-card { 
+            background: var(--c); 
+            border-radius: 20px; 
+            padding: 25px; 
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+            animation: fadeInUp 0.8s ease backwards;
+        }
+        .cat-card:hover { border-color: var(--p); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+        .cat-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid rgba(46, 204, 113, 0.2); padding-bottom: 15px; }
+        .cat-header i { font-size: 1.5rem; color: var(--p); }
+        .cat-header h3 { margin: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .cmd-list { list-style: none; padding: 0; margin: 0; }
+        .cmd-item { 
+            background: rgba(255,255,255,0.02); 
+            margin-bottom: 8px; 
+            padding: 12px 15px; 
+            border-radius: 10px; 
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: 0.2s;
+        }
+        .cmd-item:hover { background: rgba(46, 204, 113, 0.05); color: var(--p); }
+        .cmd-item b { color: var(--p); font-family: 'Courier New', Courier, monospace; }
+
+        .back-btn { display: inline-flex; align-items: center; gap: 10px; color: var(--text-dim); text-decoration: none; margin-bottom: 20px; transition: 0.3s; }
+        .back-btn:hover { color: var(--p); }
+
+        /* Kartların sırayla gelmesi için gecikme */
+        .cat-card:nth-child(1) { animation-delay: 0.1s; }
+        .cat-card:nth-child(2) { animation-delay: 0.2s; }
+        .cat-card:nth-child(3) { animation-delay: 0.3s; }
+        .cat-card:nth-child(4) { animation-delay: 0.4s; }
+        .cat-card:nth-child(5) { animation-delay: 0.5s; }
+        .cat-card:nth-child(6) { animation-delay: 0.6s; }
+        .cat-card:nth-child(7) { animation-delay: 0.7s; }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="container">
+        <a href="../" class="back-btn"><i class="fas fa-arrow-left"></i> Ana Sayfaya Dön</a>
+        
+        <div class="header">
+            <h1><i class="fas fa-robot"></i> KOMUTLAR</h1>
+            <p>Bacre4564HelperBOT Tüm Komut Listesi ve Kullanımları</p>
+        </div>
+
+        <div class="commands-grid">
+            
+            <div class="cat-card">
+                <div class="cat-header"><i class="fas fa-info-circle"></i><h3>Genel Komutlar</h3></div>
+                <div class="cmd-list">
+                    <div class="cmd-item"><b>b!profil</b> — Profilini gösterir.</div>
+                    <div class="cmd-item"><b>b!bilgi</b> — Bot hakkında bilgi.</div>
+                    <div class="cmd-item"><b>b!ping</b> — Gecikme ölçer.</div>
+                </div>
+            </div>
+
+            <div class="cat-card">
+                <div class="cat-header"><i class="fas fa-shield-alt"></i><h3>Moderasyon</h3></div>
+                <div class="cmd-list">
+                    <div class="cmd-item"><b>b!kick</b> @kullanıcı [sebep]</div>
+                    <div class="cmd-item"><b>b!ban</b> @kullanıcı [sebep]</div>
+                    <div class="cmd-item"><b>b!unban</b> @kullanıcı</div>
+                    <div class="cmd-item"><b>b!uyarı-ver</b> @kullanıcı [sebep]</div>
+                    <div class="cmd-item"><b>b!uyarı-sayısı</b> @kullanıcı</div>
+                    <div class="cmd-item"><b>b!uyarı-sil</b> @kullanıcı</div>
+                    <div class="cmd-item"><b>b!uyarı-log</b> #kanal</div>
+                </div>
+            </div>
+
+            <div class="cat-card">
+                <div class="cat-header"><i class="fas fa-coins"></i><h3>Ekonomi</h3></div>
+                <div class="cmd-list">
+                    <div class="cmd-item"><b>b!cüzdan</b> - Paranı ve şansını gösterir.</div>
+                    <div class="cmd-item"><b>b!çalış</b> - Çalışarak para kazandırır.</div>
+                    <div class="cmd-item"><b>b!market</b> - Ekonomi marketini açar.</div>
+                    <div class="cmd-item"><b>b!sıralama</b> - Zenginler listesi.</div>
+                    <div class="cmd-item"><b>b!günlük</b> - Günlük ödülünü verir.</div>
+                    <div class="cmd-item"><b>b!cf</b> [miktar/all] - Yazı-tura (riskli).</div>
+                    <div class="cmd-item"><b>b!slot</b> [miktar/all] - Slot makinesi.</div>
+                    <div class="cmd-item"><b>b!para-gönder</b> @isim [miktar]</div>
+                    <div class="cmd-item"><b>b!para-aktar</b> - Bankaya para yatırır.</div>
+                    <div class="cmd-item"><b>b!para-çek</b> - Bankadan para çeker.</div>
+                </div>
+            </div>
+
+            <div class="cat-card">
+                <div class="cat-header"><i class="fas fa-grin-tears"></i><h3>Eğlence</h3></div>
+                <div class="cmd-list">
+                    <div class="cmd-item"><b>b!öp</b> @isim - Etiketlediğin kişiyi öper.</div>
+                    <div class="cmd-item"><b>b!corona-test</b> - Virüs testi yapar.</div>
+                    <div class="cmd-item"><b>b!balık-tut</b> - Şansını dene.</div>
+                    <div class="cmd-item"><b>b!iqtest</b> - IQ seviyeni ölçer.</div>
+                    <div class="cmd-item"><b>b!tkm</b> - Botla taş-kağıt-makas.</div>
+                    <div class="cmd-item"><b>b!tokatla</b> @isim - Tokat atarsın.</div>
+                    <div class="cmd-item"><b>b!duello</b> @isim - Kapışma başlatır.</div>
+                    <div class="cmd-item"><b>b!atatürk</b> - Rastgele foto atar.</div>
+                    <div class="cmd-item"><b>b!hackle</b> @isim - Sahte hackleme.</div>
+                    <div class="cmd-item"><b>b!rastgele-mlbb</b> - MLBB karakterleri.</div>
+                    <div class="cmd-item"><b>b!wordle</b> - Kelime oyunu.</div>
+                </div>
+            </div>
+
+            <div class="cat-card">
+                <div class="cat-header"><i class="fas fa-server"></i><h3>Sunucu</h3></div>
+                <div class="cmd-list">
+                    <div class="cmd-item"><b>b!ayarlar</b> — Sunucu ayarları.</div>
+                    <div class="cmd-item"><b>b!kanal-ayarları</b> — Kanal ayarları.</div>
+                    <div class="cmd-item"><b>b!rol-ver</b> @İsim @Rol — Rol verir.</div>
+                </div>
+            </div>
+
+            <div class="cat-card">
+                <div class="cat-header"><i class="fas fa-lightbulb"></i><h3>Sistemler</h3></div>
+                <div class="cmd-list">
+                    <div class="cmd-item"><b>b!film/dizi-öneri</b> — Rastgele öneri.</div>
+                    <div class="cmd-item"><b>b!parola/isim-öneri</b> — Havalı fikirler.</div>
+                    <div class="cmd-item"><b>b!müzik-öneri</b> — Dinlenecek şarkılar.</div>
+                    <div class="cmd-item"><b>b!küfür-engel</b> — Sistemi açar/kapatır.</div>
+                    <div class="cmd-item"><b>b!link-engel</b> — (Yakında).</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
