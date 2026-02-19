@@ -3,41 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bacre4564HelperBOT Destek Talebi</title>
+    <title>Bacre4564 | Yeni Destek</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --p: #2ecc71; --bg: #0f1113; --c: #1c1f22; }
         body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .form-card { background: var(--c); padding: 40px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.05); width: 100%; max-width: 500px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-        h2 { margin-top: 0; display: flex; align-items: center; gap: 15px; }
+        .form-card { background: var(--c); padding: 40px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.05); width: 90%; max-width: 500px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        h2 { margin-top: 0; display: flex; align-items: center; gap: 15px; color: var(--p); }
         input, select, textarea { width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; color: white; margin-bottom: 20px; box-sizing: border-box; outline: none; transition: 0.3s; }
         input:focus, textarea:focus { border-color: var(--p); background: rgba(255,255,255,0.05); }
-        .submit-btn { background: var(--p); color: white; border: none; width: 100%; padding: 15px; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .submit-btn { background: var(--p); color: white; border: none; width: 100%; padding: 18px; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 1rem; }
         .submit-btn:hover { filter: brightness(1.2); transform: translateY(-2px); }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #666; text-decoration: none; font-size: 0.9rem; }
+        .back-link:hover { color: var(--p); }
     </style>
 </head>
 <body>
     <div class="form-card">
-        <h2><i class="fas fa-plus-circle" style="color:var(--p)"></i> Yeni Destek</h2>
+        <h2><i class="fas fa-plus-circle"></i> Yeni Destek</h2>
         <input type="text" id="subj" placeholder="Talep Başlığı">
         <select id="cat">
-            <option value="Teknik Sorun">Teknik Sorunlar</option>
-            <option value="Şikayet">Oyuncu Şikayet</option>
+            <option value="Teknik">Teknik Sorunlar</option>
+            <option value="Sikayet">Oyuncu Şikayet</option>
             <option value="Hata / Öneri">Hata / Öneri</option>
         </select>
-        <textarea id="msg" rows="5" placeholder="Sorununuzu detaylıca açıklayın..."></textarea>
+        <textarea id="msg" rows="5" placeholder="Sorununuzu buraya yazın..."></textarea>
         <button class="submit-btn" onclick="sendTicket()">TALEBİ GÖNDER</button>
+        <a href="../" class="back-link"><i class="fas fa-arrow-left"></i> Geri Dön</a>
     </div>
+
     <script>
         function sendTicket() {
             const s = document.getElementById('subj').value;
-            if(!s) return alert("Lütfen başlık girin!");
+            if(!s) return alert("Lütfen bir başlık girin!");
+            
             let tickets = JSON.parse(localStorage.getItem('bacre_tickets')) || [];
-            tickets.push({ id: "#"+Math.floor(1000+Math.random()*9000), subject: s, status: "Açık" });
+            tickets.push({ 
+                id: "#" + Math.floor(1000 + Math.random() * 9000), 
+                subject: s, 
+                status: "Açık" 
+            });
             localStorage.setItem('bacre_tickets', JSON.stringify(tickets));
-            window.location.href = "../"; // Tabloya döner
+            
+            alert("Talebiniz başarıyla oluşturuldu!");
+            window.location.href = "../"; 
         }
     </script>
 </body>
 </html>
-
