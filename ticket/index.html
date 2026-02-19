@@ -2,36 +2,114 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Destek Taleplerim</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekip Arkadaşı Başvurusu | Bacre4564</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --p: #2ecc71; --bg: #0f1113; --c: #1c1f22; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; padding: 40px 20px; }
-        .container { max-width: 1000px; margin: 0 auto; }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .btn-new { background: var(--p); color: white; padding: 12px 25px; border-radius: 12px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .table-box { background: var(--c); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
-        table { width: 100%; border-collapse: collapse; }
-        th { text-align: left; padding: 20px; background: rgba(255,255,255,0.02); color: var(--p); font-size: 0.8rem; text-transform: uppercase; }
-        td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        :root { --p: #3498db; --bg: #0f1113; --c: #1c1f22; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; padding: 40px 20px; margin: 0; }
+        .box { max-width: 700px; margin: 0 auto; background: var(--c); padding: 40px; border-radius: 25px; border-top: 5px solid var(--p); box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        h2 { text-align: center; color: var(--p); margin-bottom: 10px; }
+        .desc { text-align: center; opacity: 0.6; margin-bottom: 30px; font-size: 0.9rem; }
+        
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #eee; font-size: 0.9rem; }
+        
+        input, select, textarea { 
+            width: 100%; background: #25282c; border: 1px solid rgba(255,255,255,0.05); 
+            padding: 15px; border-radius: 12px; color: white; box-sizing: border-box; 
+            outline: none; transition: 0.3s; font-family: inherit;
+        }
+        input:focus, select:focus, textarea:focus { border-color: var(--p); background: #2a2e33; }
+        
+        .apply-btn { 
+            background: var(--p); color: white; border: none; width: 100%; 
+            padding: 18px; border-radius: 12px; font-weight: bold; cursor: pointer; 
+            margin-top: 20px; transition: 0.3s; font-size: 1.1rem; 
+        }
+        .apply-btn:hover { background: #2980b9; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3); }
+        
+        .info-note { background: rgba(52, 152, 219, 0.1); padding: 15px; border-radius: 10px; font-size: 0.85rem; color: var(--p); margin-bottom: 25px; border-left: 3px solid var(--p); }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h2>Destek Talepleri</h2>
-            <a href="submit/" class="btn-new">+ YENİ TALEP</a>
+
+    <div class="box">
+        <h2><i class="fas fa-user-plus"></i> Ekip Başvurusu</h2>
+        <p class="desc">Bacre4564 yönetim ekibine katılmak için lütfen aşağıdaki formu eksiksiz doldur.</p>
+        
+        <div class="info-note">
+            <i class="fas fa-info-circle"></i> Başvurunuz yöneticilerimiz tarafından incelendikten sonra Discord üzerinden sizinle iletişime geçilecektir.
         </div>
-        <div class="table-box">
-            <table>
-                <thead>
-                    <tr><th>ID</th><th>BAŞLIK</th><th>DURUM</th></tr>
-                </thead>
-                <tbody id="list">
-                    <tr><td colspan="3" style="text-align:center; padding: 40px; opacity: 0.5;">Henüz biletiniz bulunmuyor.</td></tr>
-                </tbody>
-            </table>
+
+        <div class="form-group">
+            <label>Oyun İçi Kullanıcı Adın (Nick)</label>
+            <input type="text" id="nick" placeholder="Örn: Bacre4564_User">
         </div>
+
+        <div class="form-group">
+            <label>Adınız ve Soyadınız</label>
+            <input type="text" id="fullname" placeholder="Adınız Soyadınız">
+        </div>
+
+        <div class="form-group">
+            <label>Yaşınız</label>
+            <input type="number" id="age" placeholder="Örn: 17">
+        </div>
+
+        <div class="form-group">
+            <label>Başvurmak İstediğiniz Yetki</label>
+            <select id="job">
+                <option value="" disabled selected>Bir yetki seçin...</option>
+                <option value="DRehber">DRehber</option>
+                <option value="DAsistan">DAsistan</option>
+                <option value="DModeratör">DModeratör</option>
+                <option value="Discord Yetkilisi">Discord Yetkilisi</option>
+                <option value="Geliştirici">Geliştirici</option>
+                <option value="Mimar">Mimar (Builder)</option>
+                <option value="YouTuber">YouTuber</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Günlük Aktiflik Süreniz (Saat)</label>
+            <input type="text" id="time" placeholder="Örn: Hafta içi 4, Hafta sonu 8 saat">
+        </div>
+
+        <div class="form-group">
+            <label>Daha önce başka sunucularda görev aldınız mı?</label>
+            <textarea id="experience" rows="3" placeholder="Aldıysanız sunucu adı ve yetkinizi belirtin..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Neden Bacre4564 ekibine katılmak istiyorsunuz?</label>
+            <textarea id="why" rows="4" placeholder="Seni diğer adaylardan ayıran özelliklerin neler?"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Discord Adresiniz (Kullanıcı Adı)</label>
+            <input type="text" id="discord" placeholder="Örn: bacre_user#0000">
+        </div>
+
+        <button class="apply-btn" onclick="submitApply()">
+            <i class="fas fa-paper-plane"></i> BAŞVURUYU TAMAMLA
+        </button>
     </div>
+
+    <script>
+        function submitApply() {
+            const nick = document.getElementById('nick').value;
+            const job = document.getElementById('job').value;
+
+            if(!nick || !job) {
+                alert("Lütfen en azından kullanıcı adınızı ve başvurmak istediğiniz yetkiyi seçin!");
+                return;
+            }
+
+            alert("Başvurunuz başarıyla Bacre4564 ekibine iletildi! En kısa sürede geri dönüş yapılacaktır.");
+            window.location.href = "../"; // Ana sayfaya döner
+        }
+    </script>
+
 </body>
 </html>
