@@ -3,49 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ekip Arkadaşı Başvurusu</title>
+    <title>Bacre4564HelperBOT Yetkili Başvurusu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --p: #2ecc71; --bg: #0f1113; --c: #1c1f22; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
-        .box { width: 100%; max-width: 600px; background: var(--c); padding: 40px; border-radius: 25px; border-top: 5px solid var(--p); box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
-        h2 { margin-bottom: 10px; color: var(--p); }
-        input, select, textarea { width: 100%; background: #25282c; border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; color: white; margin: 10px 0; box-sizing: border-box; outline: none; transition: 0.3s; }
-        input:focus, select:focus, textarea:focus { border-color: var(--p); }
-        .apply-btn { background: var(--p); color: white; border: none; width: 100%; padding: 18px; border-radius: 12px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; font-size: 1rem; }
-        .apply-btn:hover { background: #27ae60; transform: translateY(-2px); }
+        :root { --p: #3498db; --bg: #0f1113; --c: #1c1f22; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; padding: 40px 20px; margin: 0; }
+        .box { max-width: 800px; margin: 0 auto; background: var(--c); padding: 40px; border-radius: 25px; border-top: 5px solid var(--p); box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        h2 { text-align: center; color: var(--p); margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .form-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 10px; font-weight: bold; color: #ccc; font-size: 0.95rem; }
+        
+        input, select, textarea { 
+            width: 100%; background: #25282c; border: 1px solid rgba(255,255,255,0.05); 
+            padding: 15px; border-radius: 12px; color: white; box-sizing: border-box; 
+            outline: none; transition: 0.3s; font-family: inherit;
+        }
+        input:focus, select:focus, textarea:focus { border-color: var(--p); background: #2a2e33; }
+        
+        .apply-btn { 
+            background: var(--p); color: white; border: none; width: 100%; 
+            padding: 20px; border-radius: 12px; font-weight: bold; cursor: pointer; 
+            margin-top: 30px; transition: 0.3s; font-size: 1.1rem; text-transform: uppercase;
+        }
+        .apply-btn:hover { background: #2980b9; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3); }
+        
+        .section-title { color: var(--p); border-bottom: 1px solid rgba(52, 152, 219, 0.2); padding-bottom: 10px; margin-bottom: 20px; margin-top: 40px; font-size: 1.2rem; }
     </style>
 </head>
 <body>
+
     <div class="box">
-        <h2 style="text-align:center"><i class="fas fa-users"></i> Yetkili Başvurusu</h2>
-        <p style="text-align:center; opacity:0.6; margin-bottom: 25px;">Bacre4564 ekibine katılmak için formu doldur.</p>
-        
-        <input type="text" id="nick" placeholder="Oyun İçi Kullanıcı Adın">
-        <input type="number" id="age" placeholder="Yaşın">
-        
-        <select id="job">
-            <option value="" disabled selected>Başvurmak istediğin yetkiyi seç...</option>
-            <option value="DRehber">DRehber</option>
-            <option value="DAsistan">DAsistan</option>
-            <option value="DModeratör">DModeratör</option>
-            <option value="Discord Yetkilisi">Discord Yetkilisi</option>
-            <option value="Geliştirici">Geliştirici</option>
-        </select>
-        
-        <textarea id="about" rows="6" placeholder="Bize biraz kendinden bahset..."></textarea>
-        
-        <button class="apply-btn" onclick="submitApply()">BAŞVURUYU TAMAMLA</button>
+        <h2><i class="fas fa-file-alt"></i> YETKİLİ BAŞVURU FORMU</h2>
+
+        <div class="form-group">
+            <label>Başvuru Yapmak İstediğin Bölüm</label>
+            <select id="bolum">
+                <option value="" disabled selected>Seçiniz...</option>
+                <option value="MitaSkyBlock">MitaSkyBlock (yakında...)</option>
+                <option value="TekBlok">TekBlok (yakında...)</option>
+                <option value="MitaSurvival">MitaSurvival</option>
+                <option value="Discord">Discord Yetkilisi</option>
+            </select>
+        </div>
+
+        <div class="section-title">Kişisel Bilgiler</div>
+
+        <div class="form-group">
+            <label>Ad Soyad</label>
+            <input type="text" id="adsoyad" placeholder="Yanıtınız">
+        </div>
+
+        <div class="form-group">
+            <label>Yaş</label>
+            <input type="number" id="yas" placeholder="Yanıtınız">
+        </div>
+
+        <div class="form-group">
+            <label>Discord İsmin</label>
+            <input type="text" id="oyun_nick" placeholder="Yanıtınız">
+        </div>
+
+        <div class="form-group">
+            <label>Discord İsmin (Kullanılması zorunlu)</label>
+            <input type="text" id="discord_nick" placeholder="Örn: bacre_user">
+        </div>
+
+        <div class="form-group">
+            <label>Mikrofonun bulunmakta mı? (Bulunması zorunlu)</label>
+            <select id="mikrofon">
+                <option value="Evet">Evet</option>
+                <option value="Hayır">Hayır</option>
+            </select>
+        </div>
+
+        <div class="section-title">Aktiflik ve Deneyim</div>
+
+        <div class="form-group">
+            <label>Günlük ortalama aktiflik süren ne kadar?</label>
+            <input type="text" id="online_sure" placeholder="Örn: 5-6 Saat">
+        </div>
+
+        <div class="form-group">
+            <label>Aktif olduğun zaman dilimi?</label>
+            <select id="zaman_dilimi">
+                <option value="Sabah">Sabah</option>
+                <option value="Öğlen">Öğlen</option>
+                <option value="Akşam">Akşam</option>
+                <option value="Gece">Gece</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Discord'da ne zamandan bu yana kadar bulunuyorsun?</label>
+            <input type="text" id="oyun_baslangic" placeholder="Yanıtınız">
+        </div>
+
+        <div class="form-group">
+            <label>Yer almak istediğin görevi ne kadar iyi biliyorsun?</label>
+            <select id="bilgi_duzeyi">
+                <option value="Çok iyi">Çok iyi</option>
+                <option value="İyi">İyi</option>
+                <option value="Orta düzey">Orta düzey</option>
+                <option value="Normal">Normal</option>
+                <option value="İlk defa">İlk defa</option>
+            </select>
+        </div>
+
+        <div class="section-title">Değerlendirme Soruları</div>
+
+        <div class="form-group">
+            <label>Neden Biz?</label>
+            <textarea id="neden_biz" rows="3" placeholder="Yanıtınız"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Neden seni seçmeliyiz?</label>
+            <textarea id="neden_sen" rows="3" placeholder="Yanıtınız"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Oyuncumuz uyguladığınız muteye itirazda bulundu ne yaparsınız?</label>
+            <textarea id="soru1" rows="3" placeholder="Yanıtınız"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Oyuncularımızdan biri sizlere küfür etti ve oyun içerisinden mutelediniz, discord dm üzerinden söylemlerine devam etti ne yaparsınız?</label>
+            <textarea id="soru2" rows="3" placeholder="Yanıtınız"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Yetkili olduğunuz oyun moduyla ilgili bir oyuncu bazı eleştirilerde ve bazı tavsiyelerde bulundu ne yaparsınız?</label>
+            <textarea id="soru3" rows="3" placeholder="Yanıtınız"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Yetkili olduğunuz süreçte sizlerin yetkisinin yetmediği bir durumla karşılaştınız ne yaparsınız?</label>
+            <textarea id="soru4" rows="3" placeholder="Yanıtınız"></textarea>
+        </div>
+
+        <button class="apply-btn" onclick="basvuruYap()">
+            <i class="fas fa-check-circle"></i> BAŞVURUYU GÖNDER
+        </button>
     </div>
 
     <script>
-        function submitApply() {
-            const nick = document.getElementById('nick').value;
-            if(!nick) return alert("Lütfen kullanıcı adınızı girin!");
+        function basvuruYap() {
+            const ad = document.getElementById('adsoyad').value;
+            if(!ad) return alert("Lütfen Ad Soyad alanını doldurun!");
             
-            alert("Başvurunuz başarıyla Discord ekibimize iletildi!");
-            window.location.href = "../"; // Ana sayfaya döner
+            alert("Başvurunuz Bacre4564 yönetimine başarıyla iletildi!");
+            window.location.href = "../";
         }
     </script>
+
 </body>
 </html>
