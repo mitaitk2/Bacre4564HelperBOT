@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bacre4564HelperBOT Discord Kuralları</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #2ecc71; --bg: #0f1113; --c: #1c1f22; --text-dim: #a0a0a0; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; padding: 40px 20px; }
+        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 0%, rgba(46, 204, 113, 0.1) 0%, transparent 50%); z-index: -1; }
+        
+        .rules-box { max-width: 800px; margin: 0 auto; background: var(--c); padding: 40px; border-radius: 25px; border-left: 5px solid #7289da; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { color: #7289da; display: flex; align-items: center; gap: 15px; margin-bottom: 30px; }
+        
+        .rule-item { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .rule-item:hover { background: rgba(114, 137, 218, 0.05); border-color: #7289da; }
+        .rule-item b { color: #7289da; margin-right: 10px; }
+
+        /* İstediğin o özel buton */
+        .penalty-btn { 
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: #e74c3c; color: white; text-decoration: none; 
+            padding: 20px; border-radius: 15px; font-weight: bold; margin-top: 40px;
+            transition: 0.4s; border: none; cursor: pointer; font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
+        }
+        .penalty-btn:hover { background: #c0392b; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4); }
+        
+        .back-link { display: block; text-align: center; margin-top: 25px; color: var(--text-dim); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="rules-box">
+        <h1><i class="fab fa-discord"></i> Discord Kuralları</h1>
+        
+        <div class="rule-item"><b>1.</b> Saygılı olun; küfür, argo ve hakaret yasaktır.</div>
+        <div class="rule-item"><b>2.</b> Din, dil, ırk ve siyaset tartışmaları kesinlikle yasaktır.</div>
+        <div class="rule-item"><b>3.</b> Reklam yapmak (DM dahil) sınırsız uzaklaştırma sebebidir.</div>
+        <div class="rule-item"><b>4.</b> Spam, flood ve caps kullanımı yasaktır.</div>
+        <div class="rule-item"><b>5.</b> Yetkilileri gereksiz yere etiketlemek yasaktır.</div>
+
+        <a href="../mute-times/" class="penalty-btn">
+            <i class="fas fa-gavel"></i> CEZA ZAMANLARI
+        </a>
+
+        <a href="../" class="back-link"><i class="fas fa-arrow-left"></i> Geri Dön</a>
+    </div>
+</body>
+</html>
