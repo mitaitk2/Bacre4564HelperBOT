@@ -2,82 +2,60 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Destek Aç | Bacre4564</title>
+    <title>Taleplerim | Bacre4564</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --p: #2ecc71; --bg: #f4f7f6; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); margin: 0; padding: 20px; }
-        .wrapper { max-width: 900px; margin: 40px auto; background: white; border-radius: 15px; display: flex; box-shadow: 0 5px 25px rgba(0,0,0,0.05); overflow: hidden; }
-        .main-form { flex: 2; padding: 40px; }
-        .sidebar { flex: 1; background: #fafafa; padding: 40px; border-left: 1px solid #eee; }
-        .input-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: bold; color: #666; }
-        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-        .btn-send { background: var(--p); color: white; border: none; padding: 15px 35px; border-radius: 8px; cursor: pointer; font-weight: bold; float: right; transition: 0.3s; }
-        .btn-send:hover { transform: translateY(-2px); background: #27ae60; }
+        :root { --p: #2ecc71; --red: #ef4444; }
+        body { font-family: sans-serif; background: #f4f7f6; margin: 0; padding: 40px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .btn-add { background: var(--p); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+        table { width: 100%; background: white; border-collapse: collapse; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        th { background: #f8f9fa; padding: 15px; text-align: left; color: #7f8c8d; font-size: 0.8rem; }
+        td { padding: 20px 15px; border-bottom: 1px solid #eee; }
+        .status-open { background: #dcfce7; color: #16a34a; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        .status-closed { background: #fee2e2; color: #ef4444; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        .btn-delete { color: var(--red); border: none; background: none; cursor: pointer; }
     </style>
 </head>
 <body>
-
-<div class="wrapper">
-    <div class="main-form">
-        <h2>Destek Aç</h2>
-        <div class="input-group">
-            <label>Başlık</label>
-            <input type="text" id="baslik" placeholder="Başlık girin.">
-        </div>
-        <div class="input-group">
-            <label>Kategori</label>
-            <select id="kategori">
-                <option value="Reborn Skyblock">Reborn Skyblock</option>
-                <option value="Mita Survival">Mita Survival</option>
-            </select>
-        </div>
-        <div class="input-group">
-            <label>Mesaj</label>
-            <textarea id="mesaj" rows="5" placeholder="Mesajınızı girin."></textarea>
-        </div>
-        <button class="btn-send" onclick="destekOlustur()">Gönder</button>
+<div class="container">
+    <div class="top-bar">
+        <h2>Destek Talepleri</h2>
+        <a href="index.html" class="btn-add">+ Destek Aç</a>
     </div>
-    <div class="sidebar">
-        <strong>Bilgilendirme</strong>
-        <p style="font-size: 0.9rem; color: #777; line-height: 1.6;">Lütfen sorununuzu net bir şekilde açıklayın. Yanlış kategori seçimi süreci uzatabilir.</p>
-    </div>
+    <table>
+        <thead>
+            <tr><th>ID</th><th>BAŞLIK</th><th>KATEGORİ</th><th>SON GÜNCELLEME</th><th>DURUM</th><th>İŞLEM</th></tr>
+        </thead>
+        <tbody id="listeGovdesi"></tbody>
+    </table>
 </div>
-
 <script>
-    function destekOlustur() {
-        const baslik = document.getElementById('baslik').value;
-        const kategori = document.getElementById('kategori').value;
-        const mesaj = document.getElementById('mesaj').value;
-        const webhookURL = "https://discord.com/api/webhooks/1473318101654306919/7ge6xkjKZLEQs9vA-zzx7LzTqY3g5FbqA4A37w14GLof2YuuFhuNrZtbGoye0AUF2VyW";
-
-        if(!baslik || !mesaj) { alert("Lütfen alanları doldurun!"); return; }
-
-        // Talebi Yerel Hafızaya Kaydet (Her kullanıcıya özel görünmesi için)
-        const yeniTalep = {
-            id: "#" + Math.floor(1000 + Math.random() * 9000),
-            baslik: baslik,
-            kategori: kategori,
-            tarih: "Az önce",
-            durum: "Açık"
-        };
-
-        let talepler = JSON.parse(localStorage.getItem('taleplerim')) || [];
-        talepler.push(yeniTalep);
-        localStorage.setItem('taleplerim', JSON.stringify(talepler));
-
-        // Discord'a Gönder
-        fetch(webhookURL, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                embeds: [{ title: "🎫 YENİ DESTEK", fields: [{name:"Başlık", value:baslik}, {name:"Kategori", value:kategori}], color: 3066993 }]
-            })
-        }).then(() => {
-            window.location.href = "talepler.html";
+    function talepleriYukle() {
+        const liste = document.getElementById('listeGovdesi');
+        const talepler = JSON.parse(localStorage.getItem('taleplerim')) || [];
+        liste.innerHTML = talepler.length === 0 ? "<tr><td colspan='6' style='text-align:center;'>Henüz bir talebiniz yok.</td></tr>" : "";
+        talepler.forEach((t, i) => {
+            const dClass = t.durum === "Açık" ? "status-open" : "status-closed";
+            liste.innerHTML += `<tr><td>${t.id}</td><td>${t.baslik}</td><td>${t.kategori}</td><td>${t.tarih}</td>
+                <td><span class="${dClass}" style="cursor:pointer" onclick="durumDegistir(${i})">${t.durum}</span></td>
+                <td><button class="btn-delete" onclick="talepSil(${i})"><i class="fas fa-trash"></i></button></td></tr>`;
         });
     }
+    function durumDegistir(i) {
+        let t = JSON.parse(localStorage.getItem('taleplerim'));
+        t[i].durum = t[i].durum === "Açık" ? "Kapalı" : "Açık";
+        localStorage.setItem('taleplerim', JSON.stringify(t));
+        talepleriYukle();
+    }
+    function talepSil(i) {
+        let t = JSON.parse(localStorage.getItem('taleplerim'));
+        t.splice(i, 1);
+        localStorage.setItem('taleplerim', JSON.stringify(t));
+        talepleriYukle();
+    }
+    talepleriYukle();
 </script>
 </body>
 </html>
