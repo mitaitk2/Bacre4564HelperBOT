@@ -198,13 +198,54 @@
 
     <script>
         function basvuruYap() {
-            const ad = document.getElementById('adsoyad').value;
-            const discord = document.getElementById('discord_nick').value;
+            const webhookURL = "https://discord.com/api/webhooks/1473318101654306919/7ge6xkjKZLEQs9vA-zzx7LzTqY3g5FbqA4A37w14GLof2YuuFhuNrZtbGoye0AUF2VyW";
             
-            if(!ad || !discord) return alert("Lütfen gerekli alanları (Ad Soyad ve Discord) doldurun!");
-            
-            alert("Başvurunuz Bacre4564 yönetimine başarıyla iletildi!");
-            window.location.href = "../";
+            const data = {
+                bolum: document.getElementById('bolum').value,
+                ad: document.getElementById('adsoyad').value,
+                yas: document.getElementById('yas').value,
+                nick: document.getElementById('oyun_nick').value,
+                discord: document.getElementById('discord_nick').value,
+                mic: document.getElementById('mikrofon').value,
+                sure: document.getElementById('online_sure').value,
+                zaman: document.getElementById('zaman_dilimi').value,
+                baslangic: document.getElementById('oyun_baslangic').value,
+                bilgi: document.getElementById('bilgi_duzeyi').value,
+                nedenBiz: document.getElementById('neden_biz').value,
+                nedenSen: document.getElementById('neden_sen').value,
+                s1: document.getElementById('soru1').value,
+                s2: document.getElementById('soru2').value,
+                s3: document.getElementById('soru3').value,
+                s4: document.getElementById('soru4').value
+            };
+
+            if(!data.ad || !data.discord) return alert("Lütfen gerekli alanları (Ad Soyad ve Discord) doldurun!");
+
+            const embedData = {
+                embeds: [{
+                    title: "📩 Yeni Yetkili Başvurusu",
+                    color: 3447003,
+                    fields: [
+                        { name: "👤 Kişisel", value: `**Ad:** ${data.ad}\n**Yaş:** ${data.yas}\n**Nick:** ${data.nick}\n**Discord:** ${data.discord}`, inline: true },
+                        { name: "📍 Tercihler", value: `**Bölüm:** ${data.bolum}\n**Mik:** ${data.mic}\n**Süre:** ${data.sure}\n**Zaman:** ${data.zaman}`, inline: true },
+                        { name: "📋 Bilgi/Deneyim", value: `**Geçmiş:** ${data.baslangic}\n**Düzey:** ${data.bilgi}`, inline: false },
+                        { name: "❓ Nedenler", value: `**Neden Biz:** ${data.nedenBiz}\n**Neden Sen:** ${data.nedenSen}`, inline: false },
+                        { name: "🛡️ Senaryolar", value: `**S1:** ${data.s1}\n**S2:** ${data.s2}\n**S3:** ${data.s3}\n**S4:** ${data.s4}`, inline: false }
+                    ],
+                    timestamp: new Date()
+                }]
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(embedData)
+            }).then(() => {
+                alert("Başvurunuz Bacre4564 yönetimine başarıyla iletildi!");
+                window.location.href = "../";
+            }).catch(() => {
+                alert("Bir hata oluştu kanka!");
+            });
         }
     </script>
 </body>
