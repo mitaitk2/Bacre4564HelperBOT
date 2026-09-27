@@ -145,7 +145,7 @@
 
 <section class="hero">
   <div class="wrap">
-    <div class="eyebrow"><span class="led"></span>Bot çevrimiçi · Prefix: <code>!</code></div>
+    <div class="eyebrow" id="botStatus"><span class="led" id="botLed"></span><span id="botStatusText">Durum kontrol ediliyor…</span> · Prefix: <code>!</code></div>
     <h1>Sunucunu koruyan ve <span class="hl">büyüten</span> bir Discord botu</h1>
     <p class="lede">Gelişmiş moderasyon, anti-nuke güvenlik, seviye sistemi, ekonomi ve eğlence — 55'ten fazla komutla tek botta.</p>
     <div class="hero-cta">
@@ -285,6 +285,31 @@
     </div>
   </div>
 </footer>
+
+<script>
+  const BOT_ADI = "Bacre4564HelperBOT";
+  const SUNUCU_ID = "1415053977376260118";
+
+  fetch(`https://discord.com/api/guilds/${SUNUCU_ID}/widget.json`)
+    .then(r => { if (!r.ok) throw new Error("widget kapalı"); return r.json(); })
+    .then(data => {
+      const bot = (data.members || []).find(m => m.username === BOT_ADI);
+      const led = document.getElementById('botLed');
+      const text = document.getElementById('botStatusText');
+      if (bot) {
+        text.textContent = "Bot çevrimiçi";
+        led.style.background = "#4CD97B";
+        led.style.boxShadow = "0 0 8px #4CD97B";
+      } else {
+        text.textContent = "Bot çevrimdışı";
+        led.style.background = "#E05656";
+        led.style.boxShadow = "0 0 8px #E05656";
+      }
+    })
+    .catch(() => {
+      document.getElementById('botStatusText').textContent = "Durum bilgisi alınamadı";
+    });
+</script>
 
 </body>
 </html>
