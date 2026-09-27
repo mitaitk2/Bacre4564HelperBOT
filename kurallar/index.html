@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kurallar — Bacre4564HelperBOT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-0: #0A0C12; --bg-1: #0D1018;
+    --glass: rgba(22,26,38,0.6); --glass-strong: rgba(22,26,38,0.85);
+    --line: rgba(255,255,255,0.08);
+    --text: #EDF1F7; --text-dim: #8E97AC;
+    --blue: #3498DB; --blue-soft: rgba(52,152,219,0.16); --blue-glow: rgba(52,152,219,0.45);
+    --font: 'Poppins', system-ui, sans-serif;
+    box-sizing: border-box;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg-0); color: var(--text); font-family: var(--font); font-weight: 300; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); overflow-x: hidden; position: relative; }
+  a { color: inherit; }
+
+  .glow-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; }
+  .glow-bg span { position: absolute; border-radius: 50%; filter: blur(90px); background: var(--blue-glow); opacity: 0.22; }
+  .glow-bg span.g1 { width: 420px; height: 420px; top: -140px; left: -100px; }
+  .glow-bg span.g2 { width: 420px; height: 420px; bottom: -160px; right: -100px; }
+
+  .wrap { max-width: 820px; margin: 0 auto; padding: 0 28px; }
+
+  header.nav-container { position: sticky; top: 0; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--glass-strong); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; max-width: 1120px; margin: 0 auto; }
+  .logo { display: flex; align-items: center; gap: 11px; font-weight: 700; font-size: 17px; text-decoration: none; }
+  .logo .mark { width: 36px; height: 36px; border-radius: 11px; background: linear-gradient(150deg, var(--blue), #1c5c82); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .nav-links { display: flex; gap: 24px; font-size: 14px; font-weight: 500; }
+  .nav-links a { text-decoration: none; color: var(--text-dim); transition: color .15s; }
+  .nav-links a.active, .nav-links a:hover { color: var(--text); }
+  .nav-cta { background: var(--blue); color: #061420; font-weight: 700; font-size: 13.5px; padding: 10px 20px; border-radius: 999px; text-decoration: none; }
+  @media (max-width: 800px) { .nav-links { display: none; } }
+
+  .page-hero { padding: 70px 0 40px; text-align: center; }
+  .page-hero .kicker { font-size: 13px; color: var(--blue); font-weight: 600; margin-bottom: 14px; }
+  .page-hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 700; margin: 0 0 14px; }
+  .page-hero p { color: var(--text-dim); font-size: 15.5px; max-width: 52ch; margin: 0 auto; line-height: 1.65; }
+
+  .rules-block { padding: 20px 0 90px; }
+  .rule-group { margin-bottom: 40px; }
+  .rule-group h2 { font-size: 19px; font-weight: 600; margin: 0 0 16px; display: flex; align-items: center; gap: 10px; }
+  .rule-group h2 .n { width: 28px; height: 28px; border-radius: 8px; background: var(--blue-soft); color: var(--blue); font-size: 13px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+  .rule-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .rule-list li {
+    background: var(--glass); border: 1px solid var(--line); backdrop-filter: blur(10px);
+    border-radius: 12px; padding: 16px 18px; font-size: 14.5px; line-height: 1.6; color: var(--text);
+    display: flex; gap: 12px;
+  }
+  .rule-list li .tag {
+    flex-shrink: 0; font-size: 11px; font-weight: 600; color: var(--blue);
+    background: var(--blue-soft); border-radius: 6px; padding: 3px 8px; height: fit-content;
+  }
+  .rule-note { margin-top: 30px; font-size: 13.5px; color: var(--text-dim); font-style: italic; border-left: 2px solid var(--line); padding-left: 16px; }
+
+  footer { border-top: 1px solid var(--line); padding: 30px 0; text-align: center; font-size: 13px; color: var(--text-dim); }
+  :is(a, button):focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="glow-bg"><span class="g1"></span><span class="g2"></span></div>
+
+<header class="nav-container">
+  <div class="nav-inner">
+    <a class="logo" href="/"><span class="mark">🤖</span>Bacre4564HelperBOT</a>
+    <nav class="nav-links">
+      <a href="/#ozellikler">Özellikler</a>
+      <a href="/kurallar/" class="active">Kurallar</a>
+      <a href="/ekip/">Ekip</a>
+      <a href="/changelog/">Değişiklikler</a>
+      <a href="/sss/">SSS</a>
+    </nav>
+    <a class="nav-cta" href="#">Bota Ekle</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="kicker">KURALLAR</div>
+    <h1>Sunucu ve bot kullanım kuralları</h1>
+    <p>Herkes için güvenli ve eğlenceli bir ortam olması için lütfen aşağıdaki kuralları oku.</p>
+  </div>
+</section>
+
+<section class="rules-block">
+  <div class="wrap">
+
+    <div class="rule-group">
+      <h2><span class="n">1</span>Genel Sunucu Kuralları</h2>
+      <ul class="rule-list">
+        <li><span class="tag">Zorunlu</span>Tüm üyelere karşı saygılı ol, hakaret ve küfür yasaktır.</li>
+        <li><span class="tag">Zorunlu</span>Irkçılık, ayrımcılık ve nefret söylemi kesinlikle yasaktır.</li>
+        <li><span class="tag">Zorunlu</span>Reklam ve spam mesaj göndermek yasaktır.</li>
+        <li><span class="tag">Zorunlu</span>18+ içerik, şiddet ve rahatsız edici görsel paylaşımı yasaktır.</li>
+        <li><span class="tag">Zorunlu</span>Kanalları amacı dışında kullanmak (off-topic spam) yasaktır.</li>
+      </ul>
+    </div>
+
+    <div class="rule-group">
+      <h2><span class="n">2</span>Bot Kullanım Kuralları</h2>
+      <ul class="rule-list">
+        <li><span class="tag">Zorunlu</span>Bot komutlarını spam şeklinde art arda kullanmak yasaktır.</li>
+        <li><span class="tag">Zorunlu</span>Ekonomi sistemindeki hataları (bug) kötüye kullanmak yasaktır, fark edersen yetkiliye bildir.</li>
+        <li><span class="tag">Zorunlu</span>Başka bir üyenin hesabını izinsiz kullanarak komut çalıştırmak yasaktır.</li>
+      </ul>
+    </div>
+
+    <div class="rule-group">
+      <h2><span class="n">3</span>Moderasyon</h2>
+      <ul class="rule-list">
+        <li><span class="tag">Bilgi</span>Kural ihlali önce uyarı, tekrarında susturma veya sunucudan uzaklaştırma ile sonuçlanır.</li>
+        <li><span class="tag">Bilgi</span>Ağır ihlallerde (nefret söylemi, saldırı girişimi vb.) doğrudan kalıcı ban uygulanabilir.</li>
+        <li><span class="tag">Bilgi</span>Bir yetkiliyle anlaşmazlık yaşarsan itirazını destek ticket'ından ilet.</li>
+      </ul>
+    </div>
+
+    <p class="rule-note">Kurallar zaman zaman güncellenebilir. Sunucuya katılarak bu kuralları kabul etmiş sayılırsın.</p>
+
+  </div>
+</section>
+
+<footer>© 2026 Bacre4564HelperBOT</footer>
+
+</body>
+</html>
