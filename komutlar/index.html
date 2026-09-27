@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Komutlar — Bacre4564HelperBOT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg-0:#0A0C12;--glass:rgba(22,26,38,0.6);--glass-strong:rgba(22,26,38,0.85);--line:rgba(255,255,255,0.08);--text:#EDF1F7;--text-dim:#8E97AC;--blue:#3498DB;--blue-soft:rgba(52,152,219,0.16);--blue-glow:rgba(52,152,219,0.45);--font:'Poppins',system-ui,sans-serif;box-sizing:border-box;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--bg-0);color:var(--text);font-family:var(--font);font-weight:300;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);overflow-x:hidden;}
+  a{color:inherit;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px;}
+  header.nav-container{position:sticky;top:0;top:env(safe-area-inset-top,0px);z-index:30;background:var(--glass-strong);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1120px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:700;font-size:17px;text-decoration:none;}
+  .logo .mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(150deg,var(--blue),#1c5c82);display:flex;align-items:center;justify-content:center;font-size:18px;}
+  .nav-links{display:flex;gap:24px;font-size:14px;font-weight:500;}
+  .nav-links a{text-decoration:none;color:var(--text-dim);}
+  .nav-links a.active,.nav-links a:hover{color:var(--text);}
+  .nav-cta{background:var(--blue);color:#061420;font-weight:700;font-size:13.5px;padding:10px 20px;border-radius:999px;text-decoration:none;}
+  @media(max-width:800px){.nav-links{display:none;}}
+  .page-hero{padding:70px 0 34px;text-align:center;}
+  .page-hero .kicker{font-size:13px;color:var(--blue);font-weight:600;margin-bottom:14px;}
+  .page-hero h1{font-size:clamp(28px,5vw,42px);font-weight:700;margin:0 0 14px;}
+  .page-hero p{color:var(--text-dim);font-size:15.5px;max-width:52ch;margin:0 auto;line-height:1.65;}
+  .search-row{max-width:520px;margin:30px auto 0;}
+  .search-row input{width:100%;padding:14px 18px;border-radius:12px;border:1px solid var(--line);background:var(--glass);color:var(--text);font-family:var(--font);font-size:14.5px;}
+  .search-row input::placeholder{color:var(--text-dim);}
+  .cat-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:22px 0 0;}
+  .cat-tab{padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--glass);font-size:13px;font-weight:500;color:var(--text-dim);cursor:pointer;}
+  .cat-tab.on{background:var(--blue-soft);color:var(--blue);border-color:rgba(52,152,219,0.4);}
+  .cmd-block{padding:40px 0 90px;}
+  .cmd-group{margin-bottom:34px;}
+  .cmd-group h2{font-size:18px;font-weight:600;margin:0 0 14px;}
+  .cmd-list{display:flex;flex-direction:column;gap:8px;}
+  .cmd-row{background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:baseline;}
+  .cmd-row .name{font-family:monospace;font-size:13.5px;color:var(--blue);}
+  .cmd-row .desc{font-size:14px;color:var(--text-dim);line-height:1.55;}
+  .cmd-row .desc small{display:block;font-family:monospace;font-size:11.5px;color:#5a6478;margin-top:4px;}
+  @media(max-width:640px){.cmd-row{grid-template-columns:1fr;}}
+  footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-size:13px;color:var(--text-dim);}
+</style>
+</head>
+<body>
+<header class="nav-container"><div class="nav-inner">
+  <a class="logo" href="/"><span class="mark">🤖</span>Bacre4564HelperBOT</a>
+  <nav class="nav-links">
+    <a href="/#ozellikler">Özellikler</a><a href="/komutlar/" class="active">Komutlar</a>
+    <a href="/kurallar/">Kurallar</a><a href="/istatistikler/">İstatistikler</a><a href="/sss/">SSS</a>
+  </nav>
+  <a class="nav-cta" href="#">Bota Ekle</a>
+</div></header>
+
+<section class="page-hero"><div class="wrap">
+  <div class="kicker">KOMUTLAR</div>
+  <h1>Tüm bot komutları</h1>
+  <p>55'ten fazla komut, kategorilere ayrılmış halde. Prefix: <code>!</code></p>
+  <div class="search-row"><input type="text" id="cmdSearch" placeholder="Komut ara... örn. ban"></div>
+  <div class="cat-tabs" id="catTabs">
+    <span class="cat-tab on" data-cat="all">Tümü</span>
+    <span class="cat-tab" data-cat="guvenlik">Güvenlik</span>
+    <span class="cat-tab" data-cat="moderasyon">Moderasyon</span>
+    <span class="cat-tab" data-cat="seviye">Seviye</span>
+    <span class="cat-tab" data-cat="ekonomi">Ekonomi</span>
+    <span class="cat-tab" data-cat="eglence">Eğlence</span>
+    <span class="cat-tab" data-cat="ayarlar">Ayarlar</span>
+  </div>
+</div></section>
+
+<section class="cmd-block"><div class="wrap" id="cmdWrap">
+
+  <div class="cmd-group" data-cat="guvenlik"><h2>🛡️ Güvenlik</h2><div class="cmd-list">
+    <div class="cmd-row"><span class="name">!antinuke</span><span class="desc">Anti-nuke korumasını açar/kapatır.<small>!antinuke aç</small></span></div>
+    <div class="cmd-row"><span class="name">!güvenlik</span><span class="desc">Güvenlik ayarlarını gösterir.<small>!güvenlik</small></span></div>
+  </div></div>
+
+  <div class="cmd-group" data-cat="moderasyon"><h2>🔨 Moderasyon</h2><div class="cmd-list">
+    <div class="cmd-row"><span class="name">!ban</span><span class="desc">Üyeyi sunucudan kalıcı çıkarır.<small>!ban @üye sebep</small></span></div>
+    <div class="cmd-row"><span class="name">!kick</span><span class="desc">Üyeyi sunucudan atar.<small>!kick @üye sebep</small></span></div>
+    <div class="cmd-row"><span class="name">!mute</span><span class="desc">Belirtilen süre boyunca susturur.<small>!mute @üye 10m sebep</small></span></div>
+    <div class="cmd-row"><span class="name">!warn</span><span class="desc">Uyarı verir, geçmişe işler.<small>!warn @üye sebep</small></span></div>
+    <div class="cmd-row"><span class="name">!clear</span><span class="desc">Kanaldaki mesajları toplu siler.<small>!clear 50</small></span></div>
+    <div class="cmd-row"><span class="name">!lock</span><span class="desc">Kanalı mesaja kapatır.<small>!lock</small></span></div>
+  </div></div>
+
+  <div class="cmd-group" data-cat="seviye"><h2>📈 Seviye</h2><div class="cmd-list">
+    <div class="cmd-row"><span class="name">!seviye</span><span class="desc">Seviyeni ve XP'ni gösterir.<small>!seviye @üye</small></span></div>
+    <div class="cmd-row"><span class="name">!sıralama</span><span class="desc">Sunucunun en aktif üyeleri.<small>!sıralama</small></span></div>
+  </div></div>
+
+  <div class="cmd-group" data-cat="ekonomi"><h2>💰 Ekonomi</h2><div class="cmd-list">
+    <div class="cmd-row"><span class="name">!bakiye</span><span class="desc">Cüzdan ve banka bakiyeni gösterir.<small>!bakiye</small></span></div>
+    <div class="cmd-row"><span class="name">!günlük</span><span class="desc">Günlük ödülünü toplar.<small>!günlük</small></span></div>
+    <div class="cmd-row"><span class="name">!çalış</span><span class="desc">Çalışarak para kazanır.<small>!çalış</small></span></div>
+    <div class="cmd-row"><span class="name">!soygun</span><span class="desc">Başka bir üyeyi soymayı dener.<small>!soygun @üye</small></span></div>
+    <div class="cmd-row"><span class="name">!market</span><span class="desc">Rol ve eşya satın alma menüsü.<small>!market</small></span></div>
+    <div class="cmd-row"><span class="name">!yatır</span><span class="desc">Parayı bankaya güvenceye alır.<small>!yatır 500</small></span></div>
+    <div class="cmd-row"><span class="name">!zenginler</span><span class="desc">En yüksek bakiyeye sahip üyeler.<small>!zenginler</small></span></div>
+  </div></div>
+
+  <div class="cmd-group" data-cat="eglence"><h2>🎉 Eğlence</h2><div class="cmd-list">
+    <div class="cmd-row"><span class="name">!tahmin</span><span class="desc">Sayı tahmin oyunu.<small>!tahmin</small></span></div>
+    <div class="cmd-row"><span class="name">!meme</span><span class="desc">Rastgele meme paylaşır.<small>!meme</small></span></div>
+    <div class="cmd-row"><span class="name">!profil</span><span class="desc">Kullanıcı kartı ve rozetler.<small>!profil @üye</small></span></div>
+    <div class="cmd-row"><span class="name">!evlen</span><span class="desc">Sunucu içi evlilik sistemi.<small>!evlen @üye</small></span></div>
+  </div></div>
+
+  <div class="cmd-group" data-cat="ayarlar"><h2>⚙️ Ayarlar</h2><div class="cmd-list">
+    <div class="cmd-row"><span class="name">!karşılama</span><span class="desc">Hoş geldin mesajını ayarlar.<small>!karşılama #kanal</small></span></div>
+    <div class="cmd-row"><span class="name">!otorol</span><span class="desc">Katılan üyeye otomatik rol verir.<small>!otorol @rol</small></span></div>
+    <div class="cmd-row"><span class="name">!rolmenu</span><span class="desc">Kendinden rol seçme menüsü kurar.<small>!rolmenu</small></span></div>
+    <div class="cmd-row"><span class="name">!logkanal</span><span class="desc">Sunucu olaylarının kaydedileceği kanalı ayarlar.<small>!logkanal #log</small></span></div>
+  </div></div>
+
+</div></section>
+
+<footer>© 2026 Bacre4564HelperBOT</footer>
+
+<script>
+  const search = document.getElementById('cmdSearch');
+  const tabs = document.querySelectorAll('.cat-tab');
+  const groups = document.querySelectorAll('.cmd-group');
+  let activeCat = 'all';
+  function apply() {
+    const q = search.value.trim().toLowerCase();
+    groups.forEach(g => {
+      const catMatch = activeCat === 'all' || g.dataset.cat === activeCat;
+      let anyRowVisible = false;
+      g.querySelectorAll('.cmd-row').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        const show = catMatch && (q === '' || text.includes(q));
+        row.style.display = show ? '' : 'none';
+        if (show) anyRowVisible = true;
+      });
+      g.style.display = anyRowVisible ? '' : 'none';
+    });
+  }
+  search.addEventListener('input', apply);
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('on'));
+    t.classList.add('on');
+    activeCat = t.dataset.cat;
+    apply();
+  }));
+</script>
+</body>
+</html>
