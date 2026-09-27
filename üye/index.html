@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Üye Ara — Bacre4564HelperBOT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg-0:#0A0C12;--glass:rgba(22,26,38,0.6);--glass-strong:rgba(22,26,38,0.85);--line:rgba(255,255,255,0.08);--text:#EDF1F7;--text-dim:#8E97AC;--blue:#3498DB;--blue-soft:rgba(52,152,219,0.16);--font:'Poppins',system-ui,sans-serif;box-sizing:border-box;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--bg-0);color:var(--text);font-family:var(--font);font-weight:300;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);overflow-x:hidden;}
+  a{color:inherit;}
+  .wrap{max-width:640px;margin:0 auto;padding:0 28px;}
+  header.nav-container{position:sticky;top:0;top:env(safe-area-inset-top,0px);z-index:30;background:var(--glass-strong);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1120px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:700;font-size:17px;text-decoration:none;}
+  .logo .mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(150deg,var(--blue),#1c5c82);display:flex;align-items:center;justify-content:center;font-size:18px;}
+  .nav-links{display:flex;gap:24px;font-size:14px;font-weight:500;}
+  .nav-links a{text-decoration:none;color:var(--text-dim);}
+  .nav-links a.active,.nav-links a:hover{color:var(--text);}
+  .nav-cta{background:var(--blue);color:#061420;font-weight:700;font-size:13.5px;padding:10px 20px;border-radius:999px;text-decoration:none;}
+  @media(max-width:800px){.nav-links{display:none;}}
+  .page-hero{padding:70px 0 30px;text-align:center;}
+  .page-hero .kicker{font-size:13px;color:var(--blue);font-weight:600;margin-bottom:14px;}
+  .page-hero h1{font-size:clamp(28px,5vw,42px);font-weight:700;margin:0 0 14px;}
+  .page-hero p{color:var(--text-dim);font-size:15.5px;max-width:52ch;margin:0 auto;line-height:1.65;}
+  .search-box{display:flex;gap:10px;margin:30px 0 50px;}
+  .search-box input{flex:1;padding:14px 18px;border-radius:12px;border:1px solid var(--line);background:var(--glass);color:var(--text);font-family:var(--font);font-size:14.5px;}
+  .search-box button{padding:14px 24px;border-radius:12px;border:none;background:var(--blue);color:#061420;font-weight:600;cursor:pointer;font-family:var(--font);}
+  .card{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:28px;display:none;margin-bottom:60px;backdrop-filter:blur(10px);}
+  .card.show{display:block;}
+  .card-head{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+  .avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(150deg,var(--blue),#1c5c82);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;}
+  .card-head h3{margin:0;font-size:18px;font-weight:600;}
+  .card-head span{font-size:13px;color:var(--text-dim);}
+  .card-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .card-stats div{background:rgba(255,255,255,0.03);border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;}
+  .card-stats b{display:block;font-size:18px;color:var(--blue);}
+  .card-stats span{font-size:11.5px;color:var(--text-dim);}
+  .empty{text-align:center;color:var(--text-dim);font-size:14px;padding:40px 0 60px;}
+  .note{margin-top:-30px;margin-bottom:60px;font-size:13px;color:var(--text-dim);font-style:italic;text-align:center;}
+  footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-size:13px;color:var(--text-dim);}
+</style>
+</head>
+<body>
+<header class="nav-container"><div class="nav-inner">
+  <a class="logo" href="/"><span class="mark">🤖</span>Bacre4564HelperBOT</a>
+  <nav class="nav-links">
+    <a href="/komutlar/">Komutlar</a><a href="/istatistikler/">İstatistikler</a>
+    <a href="/liderlik-tablosu/">Liderlik Tablosu</a><a href="/uye/" class="active">Üye</a><a href="/sss/">SSS</a>
+  </nav>
+  <a class="nav-cta" href="#">Bota Ekle</a>
+</div></header>
+
+<section class="page-hero"><div class="wrap">
+  <div class="kicker">ÜYE ARA</div>
+  <h1>Bir üyenin bot profiline bak</h1>
+  <p>Kullanıcı adını yaz, seviye ve bakiye bilgisine göz at.</p>
+</div></section>
+
+<div class="wrap">
+  <div class="search-box">
+    <input type="text" id="uyeInput" placeholder="Kullanıcı adı yaz...">
+    <button id="uyeBtn">Ara</button>
+  </div>
+
+  <div class="card" id="uyeCard">
+    <div class="card-head">
+      <div class="avatar" id="uyeAvatar">?</div>
+      <div><h3 id="uyeAd">—</h3><span>Sunucu üyesi</span></div>
+    </div>
+    <div class="card-stats">
+      <div><b id="uyeSeviye">0</b><span>seviye</span></div>
+      <div><b id="uyeBakiye">₺0</b><span>bakiye</span></div>
+      <div><b id="uyeUyari">0</b><span>uyarı</span></div>
+    </div>
+  </div>
+  <div class="empty" id="uyeBos" style="display:none;">Böyle bir üye bulunamadı.</div>
+  <p class="note">Bu sayfa şu an örnek/demo veriyle çalışıyor (aynı isim her zaman aynı sonucu verir). Gerçek bot verisiyle çalışması için küçük bir API'ye bağlanması gerekiyor — istersen onu da birlikte kuralım.</p>
+</div>
+
+<footer>© 2026 Bacre4564HelperBOT</footer>
+
+<script>
+  function hashStr(s){let h=0;for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))>>>0;}return h;}
+  function ara(){
+    const name=document.getElementById('uyeInput').value.trim();
+    const card=document.getElementById('uyeCard');
+    const bos=document.getElementById('uyeBos');
+    if(!name){card.classList.remove('show');bos.style.display='none';return;}
+    const h=hashStr(name.toLowerCase());
+    document.getElementById('uyeAd').textContent=name;
+    document.getElementById('uyeAvatar').textContent=name[0].toUpperCase();
+    document.getElementById('uyeSeviye').textContent=(h%50)+1;
+    document.getElementById('uyeBakiye').textContent='₺'+((h%9000)+100).toLocaleString('tr-TR');
+    document.getElementById('uyeUyari').textContent=h%4;
+    card.classList.add('show');
+    bos.style.display='none';
+  }
+  document.getElementById('uyeBtn').addEventListener('click',ara);
+  document.getElementById('uyeInput').addEventListener('keydown',e=>{if(e.key==='Enter')ara();});
+</script>
+</body>
+</html>
