@@ -1,148 +1,290 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bacre4564HelperBOT</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root { 
-            --p: #2ecc71; 
-            --bg: #0f1113; 
-            --nav-bg: rgba(28, 31, 34, 0.8);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bacre4564HelperBOT — Discord Moderasyon ve Güvenlik Botu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-0: #0A0C12; --bg-1: #0D1018;
+    --glass: rgba(22,26,38,0.6); --glass-strong: rgba(22,26,38,0.85);
+    --line: rgba(255,255,255,0.08);
+    --text: #EDF1F7; --text-dim: #8E97AC;
+    --blue: #3498DB; --blue-soft: rgba(52,152,219,0.16); --blue-glow: rgba(52,152,219,0.45);
+    --font: 'Poppins', system-ui, sans-serif;
+    box-sizing: border-box;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg-0); color: var(--text); font-family: var(--font); font-weight: 300; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  body { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); overflow-x: hidden; position: relative; }
+  a { color: inherit; }
+  ::selection { background: var(--blue-soft); color: var(--text); }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+  .glow-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; }
+  .glow-bg span { position: absolute; border-radius: 50%; filter: blur(90px); background: var(--blue-glow); opacity: 0.3; }
+  .glow-bg span.g1 { width: 420px; height: 420px; top: -120px; left: -80px; }
+  .glow-bg span.g2 { width: 500px; height: 500px; top: 40%; right: -160px; opacity: 0.18; }
+  .glow-bg span.g3 { width: 380px; height: 380px; bottom: -140px; left: 30%; opacity: 0.16; }
 
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background: var(--bg); 
-            color: white; 
-            margin: 0; 
-            padding: 0;
-        }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
 
-        /* Üst Menü (Navbar) */
-        .navbar {
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
+  header.nav-container {
+    position: sticky; top: 0; top: env(safe-area-inset-top, 0px); z-index: 30;
+    background: var(--glass-strong); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; max-width: 1120px; margin: 0 auto; }
+  .logo { display: flex; align-items: center; gap: 11px; font-weight: 700; font-size: 17px; }
+  .logo .mark { width: 36px; height: 36px; border-radius: 11px; background: linear-gradient(150deg, var(--blue), #1c5c82); display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 0 20px var(--blue-glow); }
+  .nav-links { display: flex; gap: 24px; font-size: 14px; font-weight: 500; }
+  .nav-links a { text-decoration: none; color: var(--text-dim); transition: color .15s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta-group { display: flex; gap: 10px; align-items: center; }
+  .nav-cta { background: var(--blue); color: #061420; font-weight: 700; font-size: 13.5px; padding: 10px 20px; border-radius: 999px; text-decoration: none; box-shadow: 0 0 22px var(--blue-glow); transition: transform .15s ease; }
+  .nav-cta:hover { transform: translateY(-2px); }
+  .nav-ghost { color: var(--text-dim); font-size: 13.5px; font-weight: 500; text-decoration: none; padding: 10px 16px; }
+  @media (max-width: 800px) { .nav-links { display: none; } }
 
-        .nav-item {
-            text-decoration: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+  .hero { padding: 90px 0 40px; text-align: center; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 9px; background: var(--glass); border: 1px solid var(--line); backdrop-filter: blur(10px); padding: 8px 18px; border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--text-dim); margin-bottom: 30px; }
+  .eyebrow .led { width: 7px; height: 7px; border-radius: 50%; background: #4CD97B; box-shadow: 0 0 8px #4CD97B; }
+  .hero h1 { font-weight: 700; font-size: clamp(30px, 5.4vw, 50px); line-height: 1.15; margin: 0 auto 22px; max-width: 20ch; }
+  .hero h1 .hl { color: var(--blue); text-shadow: 0 0 30px var(--blue-glow); }
+  .hero p.lede { font-size: 17px; font-weight: 300; line-height: 1.7; color: var(--text-dim); max-width: 56ch; margin: 0 auto 38px; }
+  .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn { font-family: var(--font); font-weight: 600; font-size: 14.5px; text-decoration: none; padding: 14px 28px; border-radius: 13px; display: inline-flex; align-items: center; gap: 9px; transition: transform .15s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: var(--blue); color: #061420; box-shadow: 0 0 30px var(--blue-glow); }
+  .btn.secondary { background: var(--glass); border: 1px solid var(--line); color: var(--text); backdrop-filter: blur(10px); }
 
-        .nav-item i { font-size: 1rem; }
-        .nav-item:hover { background: rgba(255,255,255,0.05); }
-        .nav-item.active { background: var(--p); color: #000; }
+  .stat-row { display: flex; justify-content: center; gap: 14px; margin-top: 60px; flex-wrap: wrap; }
+  .stat-card { background: var(--glass); border: 1px solid var(--line); backdrop-filter: blur(10px); border-radius: 16px; padding: 20px 32px; min-width: 130px; }
+  .stat-card b { display: block; font-size: 26px; font-weight: 700; color: var(--blue); }
+  .stat-card span { font-size: 12.5px; color: var(--text-dim); }
 
-        /* Header (Görsel Alanı) */
-        .header {
-            height: 400px;
-            background: linear-gradient(rgba(15, 17, 19, 0.4), var(--bg)), 
-                        url('https://wallpaperaccess.com/full/1271195.jpg'); /* Minecraft Temalı Arka Plan */
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            animation: fadeInUp 0.8s ease-out;
-        }
+  /* alternating feature rows, eren.si style */
+  .feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 70px 0; border-bottom: 1px solid var(--line); }
+  .feature-row.reverse .fr-text { order: 2; }
+  .feature-row.reverse .fr-visual { order: 1; }
+  .fr-text h2 { font-size: 26px; font-weight: 600; margin: 0 0 14px; line-height: 1.3; }
+  .fr-text p { font-size: 15px; font-weight: 300; color: var(--text-dim); line-height: 1.7; margin: 0 0 22px; }
+  .fr-visual {
+    background: var(--glass); border: 1px solid var(--line); border-radius: 18px; backdrop-filter: blur(10px);
+    padding: 28px; min-height: 220px; display: flex; flex-direction: column; gap: 12px; justify-content: center;
+  }
+  .fr-visual .mock-line { height: 12px; border-radius: 6px; background: rgba(255,255,255,0.06); }
+  .fr-visual .mock-line.w60 { width: 60%; } .fr-visual .mock-line.w80 { width: 80%; } .fr-visual .mock-line.w40 { width: 40%; }
+  .fr-visual .mock-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-soft); border: 1px solid rgba(52,152,219,0.3); color: var(--blue); font-size: 12.5px; font-weight: 500; padding: 8px 14px; border-radius: 999px; width: fit-content; }
+  @media (max-width: 800px) { .feature-row, .feature-row.reverse { grid-template-columns: 1fr; gap: 26px; } .feature-row.reverse .fr-text, .feature-row.reverse .fr-visual { order: unset; } }
 
-        .logo-circle {
-            width: 150px;
-            height: 150px;
-            background: var(--p);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 8px solid var(--bg);
-            box-shadow: 0 0 30px rgba(46, 204, 113, 0.3);
-            margin-bottom: 20px;
-        }
+  .section { padding: 76px 0; }
+  .section-head { text-align: center; max-width: 580px; margin: 0 auto 46px; }
+  .section-head h2 { font-weight: 700; font-size: 28px; margin: 0 0 12px; }
+  .section-head p { color: var(--text-dim); font-size: 15px; font-weight: 300; line-height: 1.6; margin: 0; }
 
-        .logo-circle i { font-size: 4rem; color: #000; }
+  .tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tool-card { background: var(--glass); border: 1px solid var(--line); backdrop-filter: blur(10px); border-radius: 16px; padding: 24px; transition: border-color .2s, transform .2s; }
+  .tool-card:hover { border-color: rgba(52,152,219,0.4); transform: translateY(-2px); }
+  .tool-card .ic { font-size: 20px; margin-bottom: 12px; }
+  .tool-card h4 { font-weight: 600; font-size: 15px; margin: 0 0 6px; }
+  .tool-card p { font-size: 13px; font-weight: 300; color: var(--text-dim); margin: 0; line-height: 1.55; }
+  @media (max-width: 800px) { .tool-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .tool-grid { grid-template-columns: 1fr; } }
 
-        /* İstatistik/Hızlı Erişim Butonları */
-        .stats-container {
-            display: flex;
-            gap: 40px;
-            margin-top: 20px;
-            animation: fadeInUp 1s ease-out;
-        }
+  .pages { background: var(--bg-1); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .pages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .page-card { background: var(--glass); border: 1px solid var(--line); backdrop-filter: blur(10px); border-radius: 16px; padding: 24px; text-decoration: none; display: block; transition: border-color .2s, transform .2s; }
+  .page-card:hover { border-color: rgba(52,152,219,0.4); transform: translateY(-2px); }
+  .page-card .icon { font-size: 22px; margin-bottom: 10px; display: block; }
+  .page-card h4 { font-weight: 600; font-size: 15px; margin: 0 0 6px; }
+  .page-card p { font-size: 13px; font-weight: 300; color: var(--text-dim); margin: 0; line-height: 1.55; }
+  @media (max-width: 760px) { .pages-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .pages-grid { grid-template-columns: 1fr; } }
 
-        .stat-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(255,255,255,0.03);
-            padding: 15px 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
+  .final-cta { text-align: center; padding: 90px 0; }
+  .final-cta h2 { font-size: 30px; font-weight: 700; margin: 0 0 28px; max-width: 22ch; margin-left: auto; margin-right: auto; }
 
-        .stat-box i { font-size: 1.5rem; color: var(--p); }
-        .stat-info h4 { margin: 0; font-size: 1.1rem; }
-        .stat-info p { margin: 0; font-size: 0.8rem; color: #666; text-transform: uppercase; }
+  footer { border-top: 1px solid var(--line); padding: 50px 0 40px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; margin-bottom: 34px; }
+  .footer-grid .fmark { display: flex; align-items: center; gap: 8px; font-weight: 600; margin-bottom: 10px; }
+  .footer-grid p { font-size: 13px; color: var(--text-dim); line-height: 1.6; max-width: 32ch; }
+  .footer-col h5 { font-size: 12.5px; text-transform: none; color: var(--text); font-weight: 600; margin: 0 0 14px; }
+  .footer-col a { display: block; font-size: 13.5px; color: var(--text-dim); text-decoration: none; margin-bottom: 10px; }
+  .footer-col a:hover { color: var(--text); }
+  .footer-bottom { border-top: 1px solid var(--line); padding-top: 22px; font-size: 12.5px; color: var(--text-dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; } }
 
-    </style>
+  :is(a, button):focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="/" class="nav-item active"><i class="fas fa-home"></i> Anasayfa</a>
-        <a href="ticket/" class="nav-item"><i class="fas fa-headset"></i> Destek</a>
-        <a href="ekip-arkadasi/" class="nav-item"><i class="fas fa-edit"></i> Başvuru</a>
-        <a href="bot/" class="nav-item"><i class="fas fa-robot"></i> Bot Bilgi</a>
+<div class="glow-bg"><span class="g1"></span><span class="g2"></span><span class="g3"></span></div>
+
+<header class="nav-container">
+  <div class="nav-inner">
+    <div class="logo"><span class="mark">🤖</span>Bacre4564HelperBOT</div>
+    <nav class="nav-links">
+      <a href="#ozellikler">Özellikler</a>
+      <a href="/kurallar/">Kurallar</a>
+      <a href="/ekip/">Ekip</a>
+      <a href="/changelog/">Değişiklikler</a>
+      <a href="/sss/">SSS</a>
     </nav>
+    <div class="nav-cta-group">
+      <a class="nav-ghost" href="https://discord.gg/dguV24D7NU" target="_blank" rel="noopener">Destek</a>
+      <a class="nav-cta" href="#" id="invite-btn">Bota Ekle</a>
+    </div>
+  </div>
+</header>
 
-    <header class="header">
-        <div class="logo-circle">
-            <i class="fas fa-ghost"></i> </div>
-        
-        <div class="stats-container">
-            <div class="stat-box">
-                <div class="stat-info" style="text-align: right;">
-                    <h4>80 Üye</h4>
-                    <p>SUNUCU ADRESİNİ KOPYALA</p>
-                </div>
-                <i class="fas fa-crown"></i>
-            </div>
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="led"></span>Bot çevrimiçi · Prefix: <code>!</code></div>
+    <h1>Sunucunu koruyan ve <span class="hl">büyüten</span> bir Discord botu</h1>
+    <p class="lede">Gelişmiş moderasyon, anti-nuke güvenlik, seviye sistemi, ekonomi ve eğlence — 55'ten fazla komutla tek botta.</p>
+    <div class="hero-cta">
+      <a class="btn primary" href="#">Sunucuya Ekle</a>
+      <a class="btn secondary" href="#ozellikler">Özellikleri Gör</a>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card"><b>80+</b><span>aktif üye</span></div>
+      <div class="stat-card"><b>55+</b><span>komut</span></div>
+      <div class="stat-card"><b>7/24</b><span>çevrimiçi</span></div>
+      <div class="stat-card"><b>TR/EN</b><span>dil desteği</span></div>
+    </div>
+  </div>
+</section>
 
-            <div class="stat-box">
-                <i class="fab fa-discord"></i>
-                <div class="stat-info">
-                    <h4>Discord</h4>
-                    <p>Sunucuya Katıl!</p>
-                </div>
-            </div>
-        </div>
-    </header>
+<div class="wrap" id="ozellikler">
+
+  <div class="feature-row">
+    <div class="fr-text">
+      <h2>Moderasyonu ve güvenliği tek yerden yönet</h2>
+      <p>Ban, kick, mute ve uyarı geçmişini tek ekrandan takip et. Her işlem otomatik kayıt altına alınır, hiçbir şey kaybolmaz.</p>
+    </div>
+    <div class="fr-visual">
+      <span class="mock-chip">🛡️ Moderasyon aktif</span>
+      <div class="mock-line w80"></div>
+      <div class="mock-line w60"></div>
+      <div class="mock-line w40"></div>
+    </div>
+  </div>
+
+  <div class="feature-row reverse">
+    <div class="fr-text">
+      <h2>Anti-nuke ile ani saldırılara karşı korun</h2>
+      <p>Toplu ban, rol silme veya kanal silme gibi zararlı hareketleri saniyeler içinde algılar, yetkiyi otomatik olarak geri alır.</p>
+    </div>
+    <div class="fr-visual">
+      <span class="mock-chip">🔒 Anti-Nuke</span>
+      <div class="mock-line w60"></div>
+      <div class="mock-line w80"></div>
+      <div class="mock-line w40"></div>
+    </div>
+  </div>
+
+  <div class="feature-row">
+    <div class="fr-text">
+      <h2>Seviye sistemiyle aktif üyeleri ödüllendir</h2>
+      <p>Mesaj ve sesli sohbette geçirilen zamana göre XP kazandırır, seviyeye göre otomatik rol verir, sıralama listesi tutar.</p>
+    </div>
+    <div class="fr-visual">
+      <span class="mock-chip">📈 Seviye 24</span>
+      <div class="mock-line w40"></div>
+      <div class="mock-line w80"></div>
+      <div class="mock-line w60"></div>
+    </div>
+  </div>
+
+  <div class="feature-row reverse">
+    <div class="fr-text">
+      <h2>Sunucuya özel bir ekonomi kur</h2>
+      <p>Çalışma, günlük ödül, soygun ve market sistemiyle üyeler kendi para birimini biriktirir, harcar, riske atar.</p>
+    </div>
+    <div class="fr-visual">
+      <span class="mock-chip">💰 Ekonomi</span>
+      <div class="mock-line w60"></div>
+      <div class="mock-line w40"></div>
+      <div class="mock-line w80"></div>
+    </div>
+  </div>
+
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Sunucun için daha fazla araç</h2>
+      <p>Tüm modüller ayrı ayrı açılıp kapatılabilir.</p>
+    </div>
+    <div class="tool-grid">
+      <div class="tool-card"><div class="ic">👋</div><h4>Karşılama</h4><p>Yeni üyeye özel görselli mesajla hoş geldin der, otomatik rol atar.</p></div>
+      <div class="tool-card"><div class="ic">🎭</div><h4>Rol Menüsü</h4><p>Tepki veya menüyle üye kendi rolünü seçer.</p></div>
+      <div class="tool-card"><div class="ic">📋</div><h4>Kayıt Sistemi</h4><p>Silinen mesaj, rol ve giriş-çıkış olayları log kanalına düşer.</p></div>
+      <div class="tool-card"><div class="ic">🚫</div><h4>Otomatik Filtre</h4><p>Küfür, link ve reklamları otomatik olarak engeller.</p></div>
+      <div class="tool-card"><div class="ic">💬</div><h4>Otomatik Yanıt</h4><p>Belirli kelimelere özel mesaj veya embed ile yanıt verir.</p></div>
+      <div class="tool-card"><div class="ic">🎉</div><h4>Eğlence</h4><p>Mini oyunlar, meme paylaşımı ve profil kartları.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pages">
+  <div class="wrap section">
+    <div class="section-head">
+      <h2>Diğer sayfalar</h2>
+      <p>Kurallardan başvuruya, ekipten değişiklik geçmişine kadar her şey burada.</p>
+    </div>
+    <div class="pages-grid">
+      <a class="page-card" href="/kurallar/"><span class="icon">📜</span><h4>Kurallar</h4><p>Sunucu ve bot kullanım kuralları.</p></a>
+      <a class="page-card" href="/ekip/"><span class="icon">👥</span><h4>Ekip</h4><p>Sunucuyu ve botu yöneten ekip.</p></a>
+      <a class="page-card" href="/changelog/"><span class="icon">🗂️</span><h4>Değişiklikler</h4><p>Bota son eklenen özellikler ve düzeltmeler.</p></a>
+      <a class="page-card" href="/sss/"><span class="icon">❓</span><h4>SSS</h4><p>Sık sorulan sorular ve cevapları.</p></a>
+      <a class="page-card" href="/ticket/"><span class="icon">🎫</span><h4>Destek</h4><p>Bir sorunun mu var? Ticket açarak ekibe ulaş.</p></a>
+      <a class="page-card" href="/ekip-arkadasi/"><span class="icon">📝</span><h4>Başvuru</h4><p>Ekibe katılmak için başvuru formu.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Sunucunu bugün Bacre4564HelperBOT ile güvenceye al</h2>
+    <a class="btn primary" href="#">Sunucuya Ekle</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="fmark">🤖 Bacre4564HelperBOT</div>
+        <p>Discord sunucun için moderasyon, güvenlik, seviye ve ekonomi sistemlerini tek botta topluyor.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Bağlantılar</h5>
+        <a href="/kurallar/">Kurallar</a>
+        <a href="/sss/">SSS</a>
+        <a href="/changelog/">Değişiklikler</a>
+        <a href="https://discord.gg/dguV24D7NU" target="_blank" rel="noopener">Destek sunucusu</a>
+      </div>
+      <div class="footer-col">
+        <h5>Ekip</h5>
+        <a href="/ekip/">Ekibimiz</a>
+        <a href="/ekip-arkadasi/">Ekibe katıl</a>
+        <a href="/ticket/">Destek talebi aç</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Bacre4564HelperBOT</span>
+      <span>Discord üzerinde çalışır</span>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
-
-
