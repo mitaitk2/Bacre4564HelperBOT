@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>İstatistikler — Bacre4564HelperBOT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg-0:#0A0C12;--glass:rgba(22,26,38,0.6);--glass-strong:rgba(22,26,38,0.85);--line:rgba(255,255,255,0.08);--text:#EDF1F7;--text-dim:#8E97AC;--blue:#3498DB;--blue-soft:rgba(52,152,219,0.16);--green:#4CD97B;--font:'Poppins',system-ui,sans-serif;box-sizing:border-box;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--bg-0);color:var(--text);font-family:var(--font);font-weight:300;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);overflow-x:hidden;}
+  a{color:inherit;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 28px;}
+  header.nav-container{position:sticky;top:0;top:env(safe-area-inset-top,0px);z-index:30;background:var(--glass-strong);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1120px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:700;font-size:17px;text-decoration:none;}
+  .logo .mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(150deg,var(--blue),#1c5c82);display:flex;align-items:center;justify-content:center;font-size:18px;}
+  .nav-links{display:flex;gap:24px;font-size:14px;font-weight:500;}
+  .nav-links a{text-decoration:none;color:var(--text-dim);}
+  .nav-links a.active,.nav-links a:hover{color:var(--text);}
+  .nav-cta{background:var(--blue);color:#061420;font-weight:700;font-size:13.5px;padding:10px 20px;border-radius:999px;text-decoration:none;}
+  @media(max-width:800px){.nav-links{display:none;}}
+  .page-hero{padding:70px 0 20px;text-align:center;}
+  .page-hero .kicker{font-size:13px;color:var(--blue);font-weight:600;margin-bottom:14px;}
+  .page-hero h1{font-size:clamp(28px,5vw,42px);font-weight:700;margin:0 0 14px;}
+  .page-hero p{color:var(--text-dim);font-size:15.5px;max-width:52ch;margin:0 auto;line-height:1.65;}
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:44px 0 70px;}
+  .stat-card{background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:24px 18px;text-align:center;backdrop-filter:blur(10px);}
+  .stat-card b{display:block;font-size:28px;font-weight:700;color:var(--blue);}
+  .stat-card span{font-size:12.5px;color:var(--text-dim);}
+  @media(max-width:760px){.stat-grid{grid-template-columns:repeat(2,1fr);}}
+  .widget-block{padding:0 0 90px;text-align:center;}
+  .widget-block h2{font-size:20px;font-weight:600;margin:0 0 8px;}
+  .widget-block p{color:var(--text-dim);font-size:14px;margin:0 0 24px;}
+  .widget-frame{background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:20px;display:inline-block;}
+  .note{margin-top:26px;font-size:13px;color:var(--text-dim);font-style:italic;max-width:60ch;margin-left:auto;margin-right:auto;}
+  footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-size:13px;color:var(--text-dim);}
+</style>
+</head>
+<body>
+<header class="nav-container"><div class="nav-inner">
+  <a class="logo" href="/"><span class="mark">🤖</span>Bacre4564HelperBOT</a>
+  <nav class="nav-links">
+    <a href="/komutlar/">Komutlar</a><a href="/istatistikler/" class="active">İstatistikler</a>
+    <a href="/liderlik-tablosu/">Liderlik Tablosu</a><a href="/kurallar/">Kurallar</a><a href="/sss/">SSS</a>
+  </nav>
+  <a class="nav-cta" href="#">Bota Ekle</a>
+</div></header>
+
+<section class="page-hero"><div class="wrap">
+  <div class="kicker">İSTATİSTİKLER</div>
+  <h1>Sunucu istatistikleri</h1>
+  <p>Bacre4564HelperBOT'un o an sunucu için tuttuğu genel rakamlar.</p>
+</div></section>
+
+<div class="wrap">
+  <div class="stat-grid">
+    <div class="stat-card"><b>80</b><span>toplam üye</span></div>
+    <div class="stat-card"><b>55+</b><span>toplam komut</span></div>
+    <div class="stat-card"><b>1.240</b><span>bugün atılan mesaj</span></div>
+    <div class="stat-card"><b>99.9%</b><span>çevrimiçi kalma oranı</span></div>
+  </div>
+</div>
+
+<section class="widget-block"><div class="wrap">
+  <h2>Canlı sunucu widget'ı</h2>
+  <p>Discord'un kendi widget'ıyla o anki çevrimiçi üye sayısını gösterir.</p>
+  <div class="widget-frame">
+    <iframe src="https://discord.com/widget?id=SUNUCU_ID_BURAYA&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+  </div>
+  <p class="note">Bu widget'ın çalışması için Discord sunucu ayarlarından "Sunucu Widget'ı"nı açıp gerçek sunucu ID'sini SUNUCU_ID_BURAYA yerine yazman gerekiyor. ID'yi verirsen direkt bağlarım. Yukarıdaki sayılar da şimdilik örnek, canlı hale getirmek backend gerektiriyor.</p>
+</div></section>
+
+<footer>© 2026 Bacre4564HelperBOT</footer>
+</body>
+</html>
